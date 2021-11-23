@@ -4,11 +4,11 @@ body{
 }
 header{
     background-color: blueviolet;
-    display: flex;
 }
 footer{
     background-color: darkorchid;
 }
+
 span{
     color: white;
 }

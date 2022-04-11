@@ -3,4 +3,4 @@
 
 ---
 
-## :warning: STATUS: **NOT READY :x:**
+## STATUS: :x: NOT READY**

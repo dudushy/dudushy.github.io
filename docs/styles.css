@@ -3,3 +3,21 @@ body {
     color: #00008b;
     font-size: 18px;
 }
+
+header {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+.content {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #000000;
+}

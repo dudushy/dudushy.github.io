@@ -1,23 +1,24 @@
 body {
-    background-color: #add8e6;
-    color: #00008b;
+    background-color: #000000;
+    color: #00ff11;
     font-size: 18px;
+    font-family: monospace;
 }
 
 header {
     width: 100%;
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 }
 
 .content {
     width: 100%;
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 }
 
 footer {
     width: 100%;
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
 }

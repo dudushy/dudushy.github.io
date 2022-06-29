@@ -25,10 +25,11 @@ footer {
 
 #logos {
     display: inline-block;
-    background-color: #00ff11;
+    /* background-color: #00ff11; */
 }
 .logo {
     width: 5em;
     height: 5em;
     padding: 1em;
+    background-color: #00ff11;
 }

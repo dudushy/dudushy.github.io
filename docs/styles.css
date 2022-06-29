@@ -15,6 +15,7 @@ body {
 /*? header */
 header {
     display: flex;
+    justify-content: center;
     width: 100%;
     /* text-align: center; */
     border: 1px solid var(--green);
@@ -22,8 +23,6 @@ header {
 }
 
 #pp {
-    display: flex;
-    justify-content: center;
     width: 5em;
     height: 5em;
     padding: 1em;

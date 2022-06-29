@@ -22,6 +22,8 @@ header {
 }
 
 #pp {
+    display: flex;
+    justify-content: center;
     width: 5em;
     height: 5em;
     padding: 1em;

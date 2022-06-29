@@ -8,17 +8,27 @@ body {
 header {
     width: 100%;
     text-align: center;
-    border: 1px solid #ffffff;
+    border: 1px solid #00ff11;
 }
 
 .content {
     width: 100%;
     text-align: center;
-    border: 1px solid #ffffff;
+    border: 1px solid #00ff11;
 }
 
 footer {
     width: 100%;
     text-align: center;
-    border: 1px solid #ffffff;
+    border: 1px solid #00ff11;
+}
+
+#logos {
+    display: inline-block;
+    background-color: #00ff11;
+}
+.logo {
+    width: 5em;
+    height: 5em;
+    padding: 1em;
 }

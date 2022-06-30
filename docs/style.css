@@ -60,6 +60,13 @@ header {
     color: var(--back);
     background-color: var(--text);
 }
+#selected {
+    text-align: center;
+    border: 1px solid var(--text);
+    padding: 1em;
+    color: var(--back);
+    background-color: var(--text);
+}
 
 /*? content */
 .content {

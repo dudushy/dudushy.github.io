@@ -4,12 +4,23 @@
     --contrast: #ffffff;
 }
 
+html, body, canvas {
+    background: var(--back);
+}
+
+#rainbow-background {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
 /*? body */
 body {
     background-color: var(--back);
     color: var(--text);
     font-size: 18px;
     font-family: monospace;
+    overflow: hidden;
 }
 
 /*? header */

@@ -36,12 +36,18 @@ header {
 #pp {
     width: 5em;
     height: 5em;
-    padding: 1em;
+    padding: 0.5em;
     margin-right: 1em;
     background-color: var(--text);
     /* float: left; */
     border-radius: 1em;
     /* margin-right: 15em; */
+    border: 1px solid var(--back);
+    transition: all ease-in-out 0.15s;
+}
+#pp:hover {
+    border: 1px solid var(--text);
+    background-color: var(--back);
 }
 
 #menu {
@@ -59,6 +65,7 @@ header {
     border: 1px solid var(--text);
     padding: 1em;
     color: var(--text);
+    transition: all ease-in-out 0.15s;
 }
 .button:hover {
     text-align: center;
@@ -101,10 +108,16 @@ footer {
     height: 3em;
     padding: .5em;
     background-color: var(--text);
+    border: 1px solid var(--text);
     border-radius: 1em;
+    transition: all ease-in-out 0.15s;
 
     /* border-radius: 30px !important;
     border: 1px solid var(--contrast);
     border-bottom: 0px !important;
     padding-left: 30px !important; */
+}
+.logo:hover {
+    background-color: var(--contrast);
+    /* filter: contrast(50%); */
 }

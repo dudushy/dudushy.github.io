@@ -10,10 +10,12 @@ $light: #f4f5f8;
 
 *[theme="dark"] {
   background-color: $dark;
+  background: $dark;
   color: $light;
 }
 
 *[theme="light"] {
   background-color: $light;
+  background: $light;
   color: $dark;
 }

@@ -1,12 +1,28 @@
 <div id="app_content">
   <canvas id="rainbow-background"></canvas>
 
-  <ul>
-    <li *ngFor="let page of all_pages | keyvalue : defaultSort">
-      <button *ngIf="page.value == db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="true">{{page.value}}</button>
-      <button *ngIf="page.value != db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="false">{{page.value}}</button>
-    </li>
-  </ul>
+  <div id="taskbar">
+    <div id="taskbar_left">
+      <button (click)="toggleTaskbar()"><img class="taskbar_icon"></button>
+      <button (click)="toggleTheme()"><img class="taskbar_icon"></button>
+      <button (click)="openLink('link')"><img class="taskbar_icon"></button>
 
-  <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
+    </div>
+
+    <div id="taskbar_right">
+      <button (click)="toggleLanguage()"><i  class="taskbar_info">{{language}}</i></button>
+      <button><i class="taskbar_info">{{time}}</i></button>
+      <button><i class="taskbar_info">{{date}}</i></button>
+    </div>
+
+    <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
+      <h1>Eduardo Talarico</h1>
+
+      <li *ngFor="let page of all_pages | keyvalue : defaultSort">
+        <button *ngIf="page.value == db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="true">{{page.value}}</button>
+        <button *ngIf="page.value != db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="false">{{page.value}}</button>
+      </li>
+    </div>
+  </div>
 </div>

@@ -1,27 +1,28 @@
 <div id="app_content">
   <canvas id="rainbow-background"></canvas>
 
+  <router-outlet></router-outlet>
+
   <div id="taskbar">
     <div id="taskbar_left">
-      <button (click)="toggleTaskbar()"><img class="taskbar_icon"></button>
-      <button (click)="toggleTheme()"><img class="taskbar_icon"></button>
-      <button (click)="openLink('link')"><img class="taskbar_icon"></button>
+      <button class="taskbar_button_icon" (click)="toggleTaskbar()"><img class="taskbar_icon" src="assets/icons/home.svg"></button>
+      <button class="taskbar_button_icon" (click)="toggleTheme()"><img class="taskbar_icon" src="assets/icons/theme_{{theme}}.svg"></button>
+      <button class="taskbar_button_icon" (click)="openLink('https://github.com/dudushy/dudushy.github.io')"><img class="taskbar_icon" src="assets/icons/source_code.svg"></button>
 
-      <router-outlet></router-outlet>
+      <span id="taskbar_page">{{db.get('current_url')}}</span>
     </div>
 
     <div id="taskbar_right">
-      <button (click)="toggleLanguage()"><i  class="taskbar_info">{{language}}</i></button>
-      <button><i class="taskbar_info">{{time}}</i></button>
-      <button><i class="taskbar_info">{{date}}</i></button>
+      <button class="taskbar_button_text" (click)="toggleLanguage()"><span class="taskbar_info">{{language.toUpperCase()}}</span></button>
+      <button class="taskbar_button_text"><span class="taskbar_info">{{time}}</span></button>
+      <button class="taskbar_button_text"><span class="taskbar_info">{{date}}</span></button>
     </div>
 
     <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
       <h1>Eduardo Talarico</h1>
 
       <li *ngFor="let page of all_pages | keyvalue : defaultSort">
-        <button *ngIf="page.value == db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="true">{{page.value}}</button>
-        <button *ngIf="page.value != db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="false">{{page.value}}</button>
+        <button class="taskbar_button_page" (click)="redirectTo(page.value, TITLE)" [attr.active]="page.value == db.get('current_url')">{{page.value}}</button>
       </li>
     </div>
   </div>

@@ -98,13 +98,13 @@ export class AppComponent {
     canvas.width = window.innerWidth;
 
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-    const font = 'arial';
+    const font = 'monospace';
     const fontSize = 10;
     context.font = `${fontSize}px ${font}`;
 
     const cols = canvas.width / fontSize;
 
-    const charSet = 'B01JD'.split('');
+    const charSet = 'DUDUSHY'.split('');
 
     const drops: string | any[] = [];
     for (let col = 0; col < cols; col++) {

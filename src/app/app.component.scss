@@ -12,84 +12,123 @@
 
   #taskbar {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    // overflow: hidden;
+    top: 93.84%;
+    left: 0%;
     width: 100%;
-    height: 3%;
-    display: flex;
-    font-size: 0.5rem;
+    // height: 3%;
+    display: inline-block;
+    font-size: 3vw;
+    background: red;
+
+    #taskbar_left {
+      float: left;
+      width: 50%;
+      height: 100%;
+      background: blue;
+      display: flex;
+
+      .taskbar_button_icon {
+        padding: 0.5%;
+        margin: 0%;
+        width: 13%;
+        height: 20%;
+      }
+
+      .taskbar_icon {
+        width: 4vw;
+      }
+
+      #taskbar_page {
+        // text-align: center;
+        margin-left: 5%;
+        margin-top: 1.5%;
+      }
+    }
+
+    #taskbar_right {
+      width: 50%;
+      height: 100%;
+      background: green;
+      display: flex;
+      justify-content: right;
+
+      .taskbar_button_text {
+        padding-block: 2.7%;
+      }
+
+      .taskbar_info {
+        font-size: 2vw;
+      }
+    }
   }
 
-  #taskbar-toggle[active="false"] {
-    display: none;
-    position: absolute;
-    bottom: 3%;
-    left: 0;
-    width: 40%;
-    height: 10%;
-    background-color: #000000;
-    color: #ffffff;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.5rem;
-    cursor: pointer;
-  }
-  #taskbar-toggle:hover {
-    background-color: #ffffff;
-    color: #000000;
-  }
-  #taskbar-toggle[active="true"] {
-    display: block;
-  }
-
-  li {
-    padding-inline: 0.5em;
-    padding-bottom: 0.2em;
-    // width: 100%;
-  }
-
-  button {
-    // border-radius: 10px;
-    font-size: large;
-    font-weight: bolder;
-    // padding: 0.8em;
-    // padding-block: 0.5em;
-    transition: 0.2s;
-  }
-
-  button[active="true"] {
-    background-color: $danger;
-    color: $light;
-    transition: 0.2s;
-  }
-
-  button[active="true"]:hover {
+  #taskbar-toggle {
     background-color: $dark;
-    cursor: pointer;
-    transition: 0.2s;
-  }
+    color: $light;
 
-  button[active="true"]:active {
-    background-color: $medium;
-    color: darken($medium, 30%);
-    transition: 0.1s;
-  }
+    &:hover {
+      background-color: $light;
+      color: $dark;
+    }
 
-  button[active="false"] {
-    background-color: $light;
-    color: $danger;
-    transition: 0.2s;
-  }
+    &[active="false"] {
+      display: none;
+    }
 
-  button[active="false"]:hover {
-    color: $dark;
-    cursor: pointer;
-    transition: 0.2s;
-  }
+    &[active="true"] {
+      display: block;
+    }
 
-  button[active="false"]:active {
-    background-color: $medium;
-    color: darken($medium, 30%);
-    transition: 0.1s;
+    li {
+      padding-inline: 0.5em;
+      padding-bottom: 0.2em;
+      // width: 100%;
+    }
+
+    .taskbar_button_page {
+      // border-radius: 10px;
+      font-size: large;
+      font-weight: bolder;
+      // padding: 0.8em;
+      // padding-block: 0.5em;
+      transition: 0.2s;
+
+      &[active="true"] {
+        background-color: $danger;
+        color: $light;
+        transition: 0.2s;
+      }
+
+      &[active="true"]:hover {
+        background-color: $dark;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      &[active="true"]:active {
+        background-color: $medium;
+        color: darken($medium, 30%);
+        transition: 0.1s;
+      }
+
+      &[active="false"] {
+        background-color: $light;
+        color: $danger;
+        transition: 0.2s;
+      }
+
+      &[active="false"]:hover {
+        color: $dark;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      &[active="false"]:active {
+        background-color: $medium;
+        color: darken($medium, 30%);
+        transition: 0.1s;
+      }
+    }
   }
 }

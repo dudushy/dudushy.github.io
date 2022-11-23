@@ -13,11 +13,12 @@ import { Router } from '@angular/router';
 export class AppComponent {
   TITLE = 'AppComponent';
   all_pages: any = [];
+  theme: any = 'dark';
 
   isTaskbarActive = false;
-  language: any = null;
-  time: any = null;
-  date: any = null;
+  language: any = 'en';
+  time: any = '00:00 AM';
+  date: any = '23-Nov-2022';
 
   constructor(
     public db: DbService,
@@ -42,7 +43,7 @@ export class AppComponent {
     });
     console.log(`[${this.TITLE}#toggleTaskbar] all_pages`, this.all_pages);
 
-    this.language = this.db.get('language');
+    this.language = this.db.get('language') || 'en';
     console.log(`[${this.TITLE}#toggleTaskbar] language`, this.language);
 
     console.log(`[${this.TITLE}#toggleTaskbar] time`, this.time);
@@ -62,28 +63,32 @@ export class AppComponent {
 
   toggleTheme(): void {
     // console.log(`[${this.title}#toggleTheme]`);
+    console.log(`[${this.TITLE}#toggleTheme] theme`, this.theme);
 
-    const theme = this.db.get('theme');
-    console.log(`[${this.TITLE}#toggleTheme] theme`, theme);
-
-    if (theme == 'light') {
+    if (this.theme == 'light') {
       //? dark theme
+      this.theme = 'dark';
       this.db.set('theme', 'dark');
       document.body.setAttribute('theme', this.db.get('theme'));
     } else {
       //? light theme
+      this.theme = 'light';
       this.db.set('theme', 'light');
       document.body.setAttribute('theme', this.db.get('theme'));
     }
+
+    this.updateView(this.TITLE);
   }
 
   loadTheme(): void {
     // console.log(`[${this.title}#loadTheme]`);
 
-    const theme = this.db.get('theme');
-    console.log(`[${this.TITLE}#loadTheme] theme`, theme);
+    this.theme = this.db.get('theme') || 'dark';
+    console.log(`[${this.TITLE}#loadTheme] theme`, this.theme);
 
-    document.body.setAttribute('theme', this.db.get('theme'));
+    document.body.setAttribute('theme', this.theme);
+
+    this.updateView(this.TITLE);
   }
 
   updateView(from: string): void {
@@ -150,11 +155,14 @@ export class AppComponent {
     this.isTaskbarActive = !this.isTaskbarActive;
 
     console.log(`[${this.TITLE}#toggleTaskbar] (AFTER) isTaskbarActive`, this.isTaskbarActive);
+
+    this.updateView(this.TITLE);
   }
 
   toggleLanguage(): void {
     console.log(`[${this.TITLE}#toggleLanguage]`);
-    return;
+
+    this.updateView(this.TITLE);
   }
 
   openLink(url: string): void {

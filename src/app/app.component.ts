@@ -14,6 +14,11 @@ export class AppComponent {
   TITLE = 'AppComponent';
   all_pages: any = [];
 
+  isTaskbarActive = false;
+  language: any = null;
+  time: any = null;
+  date: any = null;
+
   constructor(
     public db: DbService,
     private router: Router,
@@ -35,6 +40,15 @@ export class AppComponent {
         this.all_pages.push(route.path);
       }
     });
+    console.log(`[${this.TITLE}#toggleTaskbar] all_pages`, this.all_pages);
+
+    this.language = this.db.get('language');
+    console.log(`[${this.TITLE}#toggleTaskbar] language`, this.language);
+
+    console.log(`[${this.TITLE}#toggleTaskbar] time`, this.time);
+    console.log(`[${this.TITLE}#toggleTaskbar] date`, this.date);
+
+    console.log(`[${this.TITLE}#toggleTaskbar] isTaskbarActive`, this.isTaskbarActive);
 
     this.loadTheme();
   }
@@ -130,4 +144,21 @@ export class AppComponent {
     }, ms);
   }
 
+  toggleTaskbar(): void {
+    console.log(`[${this.TITLE}#toggleTaskbar] (BEFORE) isTaskbarActive`, this.isTaskbarActive);
+
+    this.isTaskbarActive = !this.isTaskbarActive;
+
+    console.log(`[${this.TITLE}#toggleTaskbar] (AFTER) isTaskbarActive`, this.isTaskbarActive);
+  }
+
+  toggleLanguage(): void {
+    console.log(`[${this.TITLE}#toggleLanguage]`);
+    return;
+  }
+
+  openLink(url: string): void {
+    console.log(`[${this.TITLE}#openLink] url`, url);
+    window.open(url, '_blank');
+  }
 }

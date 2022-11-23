@@ -1,0 +1,73 @@
+@import "/src/styles.scss";
+
+#app_content {
+  overflow: hidden;
+
+  #rainbow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  ul {
+    // background-color: $warning;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  li {
+    padding-inline: 0.5em;
+    padding-bottom: 0.2em;
+    // width: 100%;
+  }
+
+  button {
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bolder;
+    padding: 0.8em;
+    padding-block: 0.5em;
+    transition: 0.2s;
+  }
+
+  button[active="true"] {
+    background-color: $danger;
+    color: $light;
+    transition: 0.2s;
+  }
+
+  button[active="true"]:hover {
+    background-color: $dark;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button[active="true"]:active {
+    background-color: $medium;
+    color: darken($medium, 30%);
+    transition: 0.1s;
+  }
+
+  button[active="false"] {
+    background-color: $light;
+    color: $danger;
+    transition: 0.2s;
+  }
+
+  button[active="false"]:hover {
+    color: $dark;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  button[active="false"]:active {
+    background-color: $medium;
+    color: darken($medium, 30%);
+    transition: 0.1s;
+  }
+}

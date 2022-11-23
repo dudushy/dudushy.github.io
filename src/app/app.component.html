@@ -1,0 +1,12 @@
+<div id="app_content">
+  <canvas id="rainbow-background"></canvas>
+
+  <ul>
+    <li *ngFor="let page of all_pages | keyvalue : defaultSort">
+      <button *ngIf="page.value == db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="true">{{page.value}}</button>
+      <button *ngIf="page.value != db.get('current_url')" (click)="redirectTo(page.value, TITLE)" [attr.active]="false">{{page.value}}</button>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>

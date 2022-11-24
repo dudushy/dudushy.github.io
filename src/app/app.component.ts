@@ -118,10 +118,10 @@ export class AppComponent {
 
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
     const font = 'monospace';
-    const fontSize = 10;
+    const fontSize = 20;
     context.font = `${fontSize}px ${font}`;
 
-    const cols = canvas.width / fontSize;
+    const cols = canvas.width;
 
     const charSet = 'DUDUSHY'.split('');
 

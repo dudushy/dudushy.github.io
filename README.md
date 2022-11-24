@@ -6,7 +6,7 @@
 
 # [ShyHub;](https://dudushy.github.io/)
 
-[pages_build_deployment]: https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment/badge.svg
+[pages_build_deployment]: https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages
 [forks]: https://img.shields.io/github/forks/dudushy/dudushy.github.io
 [stars]: https://img.shields.io/github/stars/dudushy/dudushy.github.io
 [watchers]: https://img.shields.io/github/watchers/dudushy/dudushy.github.io

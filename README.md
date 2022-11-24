@@ -1,10 +1,7 @@
 [![pages-build-deployment][pages_build_deployment]](https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment)
 
-![stars][stars] ![watchers][watchers] ![forks][forks] ![issues][issues] ![pull_requests][pull_requests] ![branches][branches]
-
-
-
 # [ShyHub;](https://dudushy.github.io/)
+![stars][stars] ![watchers][watchers] ![forks][forks] ![issues][issues] ![pull_requests][pull_requests] ![branches][branches]
 
 [pages_build_deployment]: https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages
 [forks]: https://img.shields.io/github/forks/dudushy/dudushy.github.io

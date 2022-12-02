@@ -32,6 +32,15 @@
       #taskbar-toggle {
         background-color: $dark;
         color: $light;
+        position: fixed;
+        top: 1vh;
+        left: 0;
+        width: 5vw;
+        height: 6vh;
+
+        *{
+          position: fixed;
+        }
 
         &:hover {
           background-color: $light;

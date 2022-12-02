@@ -12,27 +12,95 @@
 
   #taskbar {
     position: absolute;
-    // overflow: hidden;
-    top: 93.84%;
+    overflow: hidden;
+    top: 92vh;
     left: 0%;
-    width: 100%;
-    // height: 3%;
-    display: inline-block;
-    font-size: 3rem;
+    width: 100vw;
+    height: 8vh;
+    display: flex;
+    font-size: 4vw;
     background: red;
+    justify-content: space-between;
+    align-items: center;
 
     #taskbar_left {
-      float: left;
-      width: 50%;
-      height: 100%;
+      width: 62.628vw;
       background: blue;
       display: flex;
+      align-items: center;
+
+      #taskbar-toggle {
+        background-color: $dark;
+        color: $light;
+
+        &:hover {
+          background-color: $light;
+          color: $dark;
+        }
+
+        &[active="false"] {
+          display: none;
+        }
+
+        &[active="true"] {
+          display: block;
+        }
+
+        li {
+          padding-inline: 0.5em;
+          padding-bottom: 0.2em;
+          // width: 100%;
+        }
+
+        .taskbar_button_page {
+          // border-radius: 10px;
+          font-size: large;
+          font-weight: bolder;
+          // padding: 0.8em;
+          // padding-block: 0.5em;
+          transition: 0.2s;
+
+          &[active="true"] {
+            background-color: $danger;
+            color: $light;
+            transition: 0.2s;
+          }
+
+          &[active="true"]:hover {
+            background-color: $dark;
+            cursor: pointer;
+            transition: 0.2s;
+          }
+
+          &[active="true"]:active {
+            background-color: $medium;
+            color: darken($medium, 30%);
+            transition: 0.1s;
+          }
+
+          &[active="false"] {
+            background-color: $light;
+            color: $danger;
+            transition: 0.2s;
+          }
+
+          &[active="false"]:hover {
+            color: $dark;
+            cursor: pointer;
+            transition: 0.2s;
+          }
+
+          &[active="false"]:active {
+            background-color: $medium;
+            color: darken($medium, 30%);
+            transition: 0.1s;
+          }
+        }
+      }
 
       .taskbar_button_icon {
-        padding: 0.5%;
-        margin: 0%;
-        width: 13%;
-        height: 20%;
+        width: 6vw;
+        height: 8vh;
       }
 
       .taskbar_icon {
@@ -40,94 +108,21 @@
       }
 
       #taskbar_page {
-        // text-align: center;
-        margin-left: 5%;
-        margin-top: 1.5%;
+        margin-left: 1vw;
       }
     }
 
     #taskbar_right {
-      width: 50%;
-      height: 100%;
       background: green;
-      display: flex;
-      justify-content: right;
+      display: contents;
 
       .taskbar_button_text {
-        padding-block: 2.7%;
+        height: -webkit-fill-available;
+        width: 12.49vw;
       }
 
       .taskbar_info {
-        font-size: 2rem;
-      }
-    }
-  }
-
-  #taskbar-toggle {
-    background-color: $dark;
-    color: $light;
-
-    &:hover {
-      background-color: $light;
-      color: $dark;
-    }
-
-    &[active="false"] {
-      display: none;
-    }
-
-    &[active="true"] {
-      display: block;
-    }
-
-    li {
-      padding-inline: 0.5em;
-      padding-bottom: 0.2em;
-      // width: 100%;
-    }
-
-    .taskbar_button_page {
-      // border-radius: 10px;
-      font-size: large;
-      font-weight: bolder;
-      // padding: 0.8em;
-      // padding-block: 0.5em;
-      transition: 0.2s;
-
-      &[active="true"] {
-        background-color: $danger;
-        color: $light;
-        transition: 0.2s;
-      }
-
-      &[active="true"]:hover {
-        background-color: $dark;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-
-      &[active="true"]:active {
-        background-color: $medium;
-        color: darken($medium, 30%);
-        transition: 0.1s;
-      }
-
-      &[active="false"] {
-        background-color: $light;
-        color: $danger;
-        transition: 0.2s;
-      }
-
-      &[active="false"]:hover {
-        color: $dark;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-
-      &[active="false"]:active {
-        background-color: $medium;
-        color: darken($medium, 30%);
-        transition: 0.1s;
+        font-size: 1.914235vw;
       }
     }
   }

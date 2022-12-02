@@ -113,26 +113,37 @@ export class AppComponent {
 
   rainbowMatrix(ms: number): void {
     const canvas = document.getElementById('rainbow-background') as HTMLCanvasElement;
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
+    canvas.remove();
 
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const newCanvas = document.createElement('canvas');
+    newCanvas.id = 'rainbow-background';
+    newCanvas.style.cssText = 'position: absolute; top: 0; left: 0; z-index: -1;';
+
+    const contentDiv = document.getElementById('app_content') as HTMLDivElement;
+    contentDiv.appendChild(newCanvas);
+
+    newCanvas.height = window.innerHeight;
+    newCanvas.width = window.innerWidth;
+
+    const context = newCanvas.getContext('2d') as CanvasRenderingContext2D;
+    context.clearRect(0, 0, newCanvas.width, newCanvas.height);
+
     const font = 'monospace';
     const fontSize = 20;
     context.font = `${fontSize}px ${font}`;
 
-    const cols = canvas.width;
+    const cols = newCanvas.width;
 
     const charSet = 'DUDUSHY'.split('');
 
     const drops: string | any[] = [];
     for (let col = 0; col < cols; col++) {
-      drops[col] = Math.floor(Math.random() * canvas.height);
+      drops[col] = Math.floor(Math.random() * newCanvas.height);
     }
 
     setInterval(() => {
       context.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
       for (let col = 0; col < drops.length; col++) {
         const char = charSet[Math.floor(Math.random() * charSet.length)];
@@ -170,3 +181,4 @@ export class AppComponent {
     window.open(url, '_blank');
   }
 }
+

@@ -5,6 +5,14 @@
 
   <div id="taskbar">
     <div id="taskbar_left">
+      <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
+        <h1>Eduardo Talarico</h1>
+
+        <li *ngFor="let page of all_pages | keyvalue : defaultSort">
+          <button class="taskbar_button_page" (click)="redirectTo(page.value, TITLE)" [attr.active]="page.value == db.get('current_url')">{{page.value}}</button>
+        </li>
+      </div>
+
       <button class="taskbar_button_icon" (click)="toggleTaskbar()"><img class="taskbar_icon" src="assets/icons/home.svg"></button>
       <button class="taskbar_button_icon" (click)="toggleTheme()"><img class="taskbar_icon" src="assets/icons/theme_{{theme}}.svg"></button>
       <button class="taskbar_button_icon" (click)="openLink('https://github.com/dudushy/dudushy.github.io')"><img class="taskbar_icon" src="assets/icons/source_code.svg"></button>
@@ -16,14 +24,6 @@
       <button class="taskbar_button_text" (click)="toggleLanguage()"><span class="taskbar_info">{{language.toUpperCase()}}</span></button>
       <button class="taskbar_button_text"><span class="taskbar_info">{{time}}</span></button>
       <button class="taskbar_button_text"><span class="taskbar_info">{{date}}</span></button>
-    </div>
-
-    <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
-      <h1>Eduardo Talarico</h1>
-
-      <li *ngFor="let page of all_pages | keyvalue : defaultSort">
-        <button class="taskbar_button_page" (click)="redirectTo(page.value, TITLE)" [attr.active]="page.value == db.get('current_url')">{{page.value}}</button>
-      </li>
     </div>
   </div>
 </div>

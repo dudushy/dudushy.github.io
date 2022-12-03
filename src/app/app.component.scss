@@ -33,14 +33,10 @@
         background-color: $dark;
         color: $light;
         position: fixed;
-        top: 1vh;
+        top: 42vh;
         left: 0;
-        width: 5vw;
-        height: 6vh;
-
-        *{
-          position: fixed;
-        }
+        width: 45vw;
+        height: 50vh;
 
         &:hover {
           background-color: $light;
@@ -55,10 +51,44 @@
           display: block;
         }
 
+        * {
+          position: fixed;
+        }
+
+        h1 {
+          top: 42vh;
+          left: 1vw;
+          width: 20vw;
+          height: 4vh;
+          font-size: 2vw;
+          text-align: left;
+        }
+
         li {
           padding-inline: 0.5em;
           padding-bottom: 0.2em;
           // width: 100%;
+          list-style: none;
+        }
+
+        #taskbar_li_page-0 {
+          top: 66vh;
+          left: -1vw;
+        }
+
+        #taskbar_li_page-1 {
+          top: 72vh;
+          left: -1vw;
+        }
+
+        #taskbar_li_page-2 {
+          top: 78vh;
+          left: -1vw;
+        }
+
+        #taskbar_li_page-3 {
+          top: 84vh;
+          left: -1vw;
         }
 
         .taskbar_button_page {

@@ -8,7 +8,7 @@
       <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
         <h1>Eduardo Talarico</h1>
 
-        <li *ngFor="let page of all_pages | keyvalue : defaultSort">
+        <li *ngFor="let page of all_pages | keyvalue : defaultSort" id="taskbar_li_page-{{page.key}}">
           <button class="taskbar_button_page" (click)="redirectTo(page.value, TITLE)" [attr.active]="page.value == db.get('current_url')">{{page.value}}</button>
         </li>
       </div>

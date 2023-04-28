@@ -1,5 +1,5 @@
 #! title preset
-TITLE='[build.sh]'
+TITLE='[build_n_deploy.sh]'
 
 echo $TITLE 'setup config...'
 echo $TITLE '- - - - - - - - - - - - - - - - - - - - - - - - - -'
@@ -11,7 +11,7 @@ echo $TITLE '- PAGE_URL=' $PAGE_URL
 PROJECT_NAME='portfolio'
 echo $TITLE '- PROJECT_NAME=' $PROJECT_NAME
 
-COMMIT_MESSAGE='`build.sh`'
+COMMIT_MESSAGE='`build_n_deploy.sh`'
 echo $TITLE '- COMMIT_MESSAGE=' $COMMIT_MESSAGE
 
 echo $TITLE '- - - - - - - - - - - - - - - - - - - - - - - - - -'

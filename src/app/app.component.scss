@@ -37,20 +37,16 @@
         left: 0;
         width: 45vw;
         height: 50vh;
-
         &:hover {
           background-color: $light;
           color: $dark;
         }
-
         &[active="false"] {
           display: none;
         }
-
         &[active="true"] {
           display: block;
         }
-
         * {
           position: fixed;
         }
@@ -98,37 +94,31 @@
           // padding: 0.8em;
           // padding-block: 0.5em;
           transition: 0.2s;
-
           &[active="true"] {
             background-color: $danger;
             color: $light;
             transition: 0.2s;
           }
-
           &[active="true"]:hover {
             background-color: $dark;
             cursor: pointer;
             transition: 0.2s;
           }
-
           &[active="true"]:active {
             background-color: $medium;
             color: darken($medium, 30%);
             transition: 0.1s;
           }
-
           &[active="false"] {
             background-color: $light;
             color: $danger;
             transition: 0.2s;
           }
-
           &[active="false"]:hover {
             color: $dark;
             cursor: pointer;
             transition: 0.2s;
           }
-
           &[active="false"]:active {
             background-color: $medium;
             color: darken($medium, 30%);

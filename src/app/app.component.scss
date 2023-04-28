@@ -140,10 +140,13 @@
       .taskbar_button_icon {
         width: 6vw;
         height: 8vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .taskbar_icon {
-        width: 4vw;
+        width: 3vw;
       }
 
       #taskbar_page {

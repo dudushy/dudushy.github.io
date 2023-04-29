@@ -13,7 +13,8 @@
   #taskbar {
     position: absolute;
     overflow: hidden;
-    top: 92vh;
+    // top: 92vh;
+    bottom: 0%;
     left: 0%;
     width: 100vw;
     height: 8vh;
@@ -47,44 +48,18 @@
         &[active="true"] {
           display: block;
         }
-        * {
-          position: fixed;
-        }
 
         h1 {
-          top: 42vh;
-          left: 1vw;
-          width: 20vw;
-          height: 4vh;
+          // top: 42vh;
+          // left: 1vw;
+          // width: 20vw;
+          // height: 4vh;
           font-size: 2vw;
           text-align: left;
         }
 
-        li {
-          padding-inline: 0.5em;
-          padding-bottom: 0.2em;
-          // width: 100%;
-          list-style: none;
-        }
-
-        #taskbar_li_page-0 {
-          top: 66vh;
-          left: -1vw;
-        }
-
-        #taskbar_li_page-1 {
-          top: 72vh;
-          left: -1vw;
-        }
-
-        #taskbar_li_page-2 {
-          top: 78vh;
-          left: -1vw;
-        }
-
-        #taskbar_li_page-3 {
-          top: 84vh;
-          left: -1vw;
+        nav {
+          display: flex;
         }
 
         .taskbar_button_page {

@@ -1,7 +1,25 @@
 [![pages-build-deployment][pages_build_deployment]](https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment)
-
-# [ShyHub;](https://dudushy.github.io/)
 ![stars][stars] ![watchers][watchers] ![forks][forks] ![issues][issues] ![pull_requests][pull_requests] ![branches][branches]
+# [dudushy's portfolio](https://dudushy.github.io/)
+<hr>
+
+## Prerequisites:
+- [NodeJS](https://nodejs.org/)
+
+## How to install:
+1. Install packages
+    ```bash
+    npm i
+    ```
+2. Run project
+    ```bash
+    npm start
+    ```
+3. Build project
+    ```bash
+    npm run build
+    ```
+
 
 [pages_build_deployment]: https://github.com/dudushy/dudushy.github.io/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages
 [forks]: https://img.shields.io/github/forks/dudushy/dudushy.github.io

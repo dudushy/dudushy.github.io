@@ -62,31 +62,22 @@ export class AppComponent {
   }
 
   toggleTheme(): void {
-    // console.log(`[${this.title}#toggleTheme]`);
-    console.log(`[${this.TITLE}#toggleTheme] theme`, this.theme);
+    const newTheme = this.theme == 'light' ? this.theme = 'dark' : this.theme = 'light';
+    console.log(`[${this.TITLE}#toggleTheme] theme:`, this.theme, 'newTheme:', newTheme);
 
-    if (this.theme == 'light') {
-      //? dark theme
-      this.theme = 'dark';
-      this.db.set('theme', 'dark');
-      document.body.setAttribute('theme', this.db.get('theme'));
-    } else {
-      //? light theme
-      this.theme = 'light';
-      this.db.set('theme', 'light');
-      document.body.setAttribute('theme', this.db.get('theme'));
-    }
+    this.db.set('theme', newTheme);
+    this.theme = newTheme;
+    document.body.setAttribute('theme', newTheme);
 
     this.updateView(this.TITLE);
   }
 
   loadTheme(): void {
-    // console.log(`[${this.title}#loadTheme]`);
+    const oldTheme = this.db.get('theme') || 'dark';
+    console.log(`[${this.TITLE}#loadTheme] oldTheme`, oldTheme);
 
-    this.theme = this.db.get('theme') || 'dark';
-    console.log(`[${this.TITLE}#loadTheme] theme`, this.theme);
-
-    document.body.setAttribute('theme', this.theme);
+    this.theme = oldTheme;
+    document.body.setAttribute('theme', oldTheme);
 
     this.updateView(this.TITLE);
   }

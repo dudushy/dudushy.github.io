@@ -4,7 +4,7 @@
 
 ---
 ## Prerequisites:
-- [NodeJS v20.11.0](https://nodejs.org/download/release/v20.11.0/)
+- [NodeJS `v20.11.0`](https://nodejs.org/download/release/v20.11.0/)
 
 ## How to install and run:
 1. Install packages

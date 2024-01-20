@@ -1,0 +1,6 @@
+@import "../../../styles.scss";
+
+:host {
+  height: calc(var(--responsiveUnit) * 2);
+  width: calc(var(--responsiveUnit) * 2);
+}

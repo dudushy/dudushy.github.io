@@ -1,6 +1,42 @@
 {
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": [
-    "angular.ng-template"
+    "angular.ng-template",
+    "bierner.emojisense",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+    "streetsidesoftware.code-spell-checker",
+    "naumovs.color-highlight",
+    "adam-watters.vscode-color-pick",
+    "dracula-theme.theme-dracula",
+    "editorconfig.editorconfig",
+    "usernamehw.errorlens",
+    "dbaeumer.vscode-eslint",
+    "mkxml.vscode-filesize",
+    "ctcuff.font-preview",
+    "github.copilot",
+    "github.copilot-chat",
+    "eamodio.gitlens",
+    "ecmel.vscode-html-css",
+    "abusaidm.html-snippets",
+    "oderwat.indent-rainbow",
+    "sirtori.indenticator",
+    "visualstudioexptteam.vscodeintellicode",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "zignd.html-css-class-completion",
+    "xabikos.javascriptsnippets",
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    "christian-kohler.path-intellisense",
+    "tal7aouy.rainbow-bracket",
+    "gencer.html-slim-scss-css-class-completion",
+    "sibiraj-s.vscode-scss-formatter",
+    "mrmlnc.vscode-scss",
+    "vscode-snippet.snippet",
+    "nikitakunevich.snippet-creator",
+    "developer2006.svg-gallery",
+    "vscode-icons-team.vscode-icons"
   ]
 }

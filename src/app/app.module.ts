@@ -3,18 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './components/test/test.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { AboutMeComponent } from './components/about-me/about-me.component';
-import { ContactComponent } from './components/contact/contact.component';
+
+import { TestComponent } from './pages/test/test.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SvgRendererComponent } from './components/svg-renderer/svg-renderer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    ProjectsComponent,
-    AboutMeComponent,
-    ContactComponent
+    HomeComponent,
+    NotFoundComponent,
+    SvgRendererComponent
   ],
   imports: [
     BrowserModule,

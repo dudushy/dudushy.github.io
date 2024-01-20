@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TestComponent } from './components/test/test.component';
-import { ProjectsComponent } from './components/projects/projects.component';
-import { AboutMeComponent } from './components/about-me/about-me.component';
-import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TestComponent } from './pages/test/test.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
-// const routes: Routes = [];
 const routes: Routes = [
+  // { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'test', component: TestComponent },
-  { path: 'projects', component: ProjectsComponent },
-  { path: 'about-me', component: AboutMeComponent },
-  { path: 'contact', component: ContactComponent }
+  { path: 'not-found', component: NotFoundComponent },
+
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({

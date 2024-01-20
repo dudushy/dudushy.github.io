@@ -9,6 +9,17 @@ module.exports = {
     'plugin:@typescript-eslint/recommended'
   ],
   'overrides': [
+    {
+      'env': {
+        'node': true
+      },
+      'files': [
+        '.eslintrc.{js,cjs}'
+      ],
+      'parserOptions': {
+        'sourceType': 'script'
+      }
+    }
   ],
   'parser': '@typescript-eslint/parser',
   'parserOptions': {
@@ -18,6 +29,11 @@ module.exports = {
     '@typescript-eslint'
   ],
   'rules': {
+    'indent': [
+      'error',
+      2,
+      { 'SwitchCase': 1 }
+    ],
     'quotes': [
       'error',
       'single'

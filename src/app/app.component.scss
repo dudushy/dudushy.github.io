@@ -1,136 +1,96 @@
-@import "/src/styles.scss";
+@import "../styles.scss";
 
-#app_content {
-  overflow: hidden;
+:host {
+  --headerGradient: none;
+  --contentGradient: none;
+  --footerGradient: none;
+  --mainGradient: linear-gradient(180deg, #9796f0, #fbc7d4);
+}
 
-  #rainbow-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+main {
+  position: relative;
+  @include fixedHeight(100%);
+  @include fixedWidth(100%);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // background: var(--mainGradient);
+  &::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @include square(calc(var(--responsiveUnit) * 200));
+    background: var(--mainGradient);
     z-index: -1;
+    @include allVendors(animation, 50s spin linear infinite);
   }
+}
 
-  #taskbar {
-    position: absolute;
-    overflow: hidden;
-    // top: 92vh;
-    bottom: 0%;
-    left: 0%;
-    width: 100vw;
-    height: 8vh;
-    display: flex;
-    font-size: 4vw;
-    background: red;
-    justify-content: space-between;
-    align-items: center;
+router-outlet {
+  display: none;
+}
 
-    #taskbar_left {
-      width: 62.628vw;
-      background: blue;
-      display: flex;
-      align-items: center;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--headerGradient);
+  @include fixedWidth(100%);
+  @include fixedHeight(var(--headerHeight));
 
-      #taskbar-toggle {
-        background-color: $dark;
-        color: $light;
-        position: fixed;
-        top: 42vh;
-        left: 0;
-        width: 45vw;
-        height: 50vh;
-        &:hover {
-          background-color: $light;
-          color: $dark;
-        }
-        &[active="false"] {
-          display: none;
-        }
-        &[active="true"] {
-          display: block;
-        }
+  a {
+    margin: 0;
+    font-size: calc(var(--responsiveUnit) * 2);
+    font-family: sans-serif;
+    font-weight: bolder;
+    color: $dark;
+    text-decoration: none;
+    @include allVendors(transition, all 250ms ease-in-out);
+    &:hover {
+      color: $white;
+    }
+  }
+}
 
-        h1 {
-          // top: 42vh;
-          // left: 1vw;
-          // width: 20vw;
-          // height: 4vh;
-          font-size: 2vw;
-          text-align: left;
-        }
+#main-content {
+  @include fixedWidth(100%);
+  min-height: unset;
+  background: var(--contentGradient);
+}
 
-        nav {
-          display: flex;
-        }
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--footerGradient);
+  @include fixedWidth(100%);
+  @include fixedHeight(var(--footerHeight));
 
-        .taskbar_button_page {
-          // border-radius: 10px;
-          font-size: large;
-          font-weight: bolder;
-          // padding: 0.8em;
-          // padding-block: 0.5em;
-          transition: 0.2s;
-          &[active="true"] {
-            background-color: $danger;
-            color: $light;
-            transition: 0.2s;
-          }
-          &[active="true"]:hover {
-            background-color: $dark;
-            cursor: pointer;
-            transition: 0.2s;
-          }
-          &[active="true"]:active {
-            background-color: $medium;
-            color: darken($medium, 30%);
-            transition: 0.1s;
-          }
-          &[active="false"] {
-            background-color: $light;
-            color: $danger;
-            transition: 0.2s;
-          }
-          &[active="false"]:hover {
-            color: $dark;
-            cursor: pointer;
-            transition: 0.2s;
-          }
-          &[active="false"]:active {
-            background-color: $medium;
-            color: darken($medium, 30%);
-            transition: 0.1s;
-          }
-        }
-      }
+  h2 {
+    font-size: calc(var(--responsiveUnit) * 1);
+    text-align: center;
+    font-family: sans-serif;
 
-      .taskbar_button_icon {
-        width: 6vw;
-        height: 8vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .taskbar_icon {
-        width: 3vw;
-      }
-
-      #taskbar_page {
-        margin-left: 1vw;
-      }
+    #heart {
+      color: $danger;
     }
 
-    #taskbar_right {
-      background: green;
-      display: contents;
-
-      .taskbar_button_text {
-        height: -webkit-fill-available;
-        width: 12.49vw;
-      }
-
-      .taskbar_info {
-        font-size: 1.914235vw;
+    a {
+      color: $danger;
+      font-family: monospace;
+      @include allVendors(transition, all 250ms ease-in-out);
+      &:hover {
+        color: $tertiary;
       }
     }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }

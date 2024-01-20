@@ -1,29 +1,17 @@
-<div id="app_content">
-  <canvas id="rainbow-background"></canvas>
+<main>
+  <header>
+    <a href="">{{PROJECT_NAME}}</a>
+  </header>
 
-  <router-outlet></router-outlet>
-
-  <div id="taskbar">
-    <div id="taskbar_left">
-      <div id="taskbar-toggle" [attr.active]="isTaskbarActive">
-        <h1>Eduardo Talarico</h1>
-
-        <nav>
-          <button *ngFor="let page of all_pages | keyvalue : defaultSort" id="taskbar_button_page-{{page.value}}" class="taskbar_button_page" (click)="redirectTo(page.value, TITLE)" [attr.active]="page.value == db.get('current_url')">{{page.value}}</button>
-        </nav>
-      </div>
-
-      <button class="taskbar_button_icon" (click)="toggleTaskbar()"><img class="taskbar_icon" src="assets/icons/home.svg"></button>
-      <button class="taskbar_button_icon" (click)="toggleTheme()"><img class="taskbar_icon" src="assets/icons/theme_{{theme}}.svg"></button>
-      <button class="taskbar_button_icon" (click)="openLink('https://github.com/dudushy/dudushy.github.io')"><img class="taskbar_icon" src="assets/icons/source_code.svg"></button>
-
-      <span id="taskbar_page">{{db.get('current_url')}}</span>
-    </div>
-
-    <div id="taskbar_right">
-      <button class="taskbar_button_text" (click)="toggleLanguage()"><span class="taskbar_info">{{language.toUpperCase()}}</span></button>
-      <button class="taskbar_button_text"><span class="taskbar_info">{{time}}</span></button>
-      <button class="taskbar_button_text"><span class="taskbar_info">{{date}}</span></button>
-    </div>
+  <div id="main-content">
+    <router-outlet></router-outlet>
   </div>
-</div>
+
+  <footer>
+    <h2>
+      Made with <span id="heart">&#10084;</span>
+      <br>
+      by <a href="https://github.com/dudushy" target="_blank">dudushy</a>
+    </h2>
+  </footer>
+</main>

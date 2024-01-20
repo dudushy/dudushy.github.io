@@ -1,15 +1,36 @@
 <main>
-  <div id="main-content">
-    <canvas id="rainbow-background"></canvas>
+  <div id="main-background"></div>
 
+  <div id="main-content">
     <router-outlet></router-outlet>
   </div>
 
   <footer>
-    <h2>
-      Made with <span id="heart">&#10084;</span>
-      <br>
-      by <a href="https://github.com/dudushy" target="_blank">dudushy</a>
-    </h2>
+    <div class="taskbar">
+      <div class="taskbar-start">
+        <i class="bi bi-grid-1x2-fill"></i>
+      </div>
+
+      <div class="taskbar-middle">
+        <a class="taskbar-icon" href="#">
+          <i class="bi bi-github"></i>
+        </a>
+
+        <a class="taskbar-icon" href="#">
+          <i class="bi bi-discord"></i>
+        </a>
+      </div>
+
+      <div class="taskbar-end">
+        <a class="taskbar-src" href="#">
+          S<br>R<br>C
+        </a>
+
+        <div class="taskbar-clock">
+          <div class="taskbar-time">03:45 PM</div>
+          <div class="taskbar-date">20-Jan-24</div>
+        </div>
+      </div>
+    </div>
   </footer>
 </main>

@@ -4,7 +4,7 @@
   --headerGradient: none;
   --contentGradient: none;
   --footerGradient: none;
-  --mainGradient: linear-gradient(180deg, #9796f0, #fbc7d4);
+  --mainGradient: linear-gradient(180deg, #77410f, #77410f, #641788, #641788);
 }
 
 main {
@@ -15,51 +15,179 @@ main {
   flex-direction: column;
   overflow-x: hidden;
   scroll-behavior: smooth;
+
+  @include portrait {
+    &:before {
+      content: "portrait not ready";
+      position: absolute;
+      inset: 0;
+      // top: 0;
+      // left: 0;
+      z-index: 1;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
-#rainbow-background {
-  position: absolute;
-  top: 0;
-  left: 0;
+#main-background {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include square(calc(var(--responsiveUnit) * 200));
+  background: var(--mainGradient);
   z-index: -1;
-}
+  @include allVendors(animation, 50s spin linear infinite);
 
-router-outlet {
-  display: none;
+  @keyframes spin {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
 }
-
 
 #main-content {
   @include fixedWidth(100%);
   min-height: unset;
   // background: var(--contentGradient);
-  background: blue;
+  // background: red;
+
+  router-outlet {
+    display: none;
+  }
 }
 
 footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   // background: var(--footerGradient);
-  background: black;
+  // background: white;
+  background: transparentize($color: $black, $amount: 0.4);
   @include fixedWidth(100%);
   @include fixedHeight(var(--footerHeight));
+  overflow: hidden;
+  backdrop-filter: blur(calc(var(--responsiveUnit) * 0.4));
+  // border-top: calc(var(--responsiveUnit) * 0.05) solid transparentize($color: $white, $amount: 0.2);
 
-  h2 {
-    font-size: calc(var(--responsiveUnit) * 1);
-    text-align: center;
-    font-family: sans-serif;
+  .taskbar {
+    --taskbarStartWidth: 4%;
+    --taskbarMiddleWidth: 88%;
+    --taskbarEndWidth: 8%;
 
-    #heart {
-      color: $danger;
+    // @include fixedWidth(100%);
+    width: 100%;
+    // @include fixedHeight(100%);
+    height: 100%;
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+
+    .taskbar-start,
+    .taskbar-middle,
+    .taskbar-end {
+      height: 100%;
     }
 
-    a {
-      color: $danger;
-      font-family: monospace;
-      @include allVendors(transition, all 250ms ease-in-out);
-      &:hover {
-        color: $tertiary;
+    .taskbar-start {
+      width: var(--taskbarStartWidth);
+      // background: yellow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      i {
+        font-size: calc(var(--responsiveUnit) * 1.2);
+        // color: green;
+        color: white;
+      }
+    }
+
+    .taskbar-middle {
+      width: var(--taskbarMiddleWidth);
+      // background: purple;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .taskbar-icon {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(var(--responsiveUnit) * 2.5);
+        margin-left: calc(var(--responsiveUnit) * 0.1);
+        // background: orange;
+
+        i {
+          color: white;
+          font-size: calc(var(--responsiveUnit) * 1.2);
+        }
+      }
+    }
+
+    .taskbar-end {
+      --srcWidth: 20%;
+      --clockWidth: 80%;
+
+      width: var(--taskbarEndWidth);
+      // background: blue;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .taskbar-src,
+      .taskbar-clock {
+        height: 100%;
+      }
+
+      .taskbar-src {
+        width: var(--srcWidth);
+        height: 100%;
+        // background: royalblue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: calc(var(--responsiveUnit) * 0.4);
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .taskbar-clock {
+        width: var(--clockWidth);
+        height: 100%;
+        // background: brown;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // justify-content: space-evenly;
+        color: white;
+        font-family: sans-serif;
+
+        .taskbar-time,
+        .taskbar-date {
+          height: 50%;
+          white-space: nowrap;
+          // overflow: hidden;
+          display: flex;
+          justify-content: center;
+          // align-items: center;
+          align-items: flex-end;
+        }
+
+        .taskbar-time {
+          font-size: calc(var(--responsiveUnit) * 0.7);
+          // align-items: flex-end;
+        }
+
+        .taskbar-date {
+          font-size: calc(var(--responsiveUnit) * 0.65);
+          // align-items: flex-start;
+        }
       }
     }
   }

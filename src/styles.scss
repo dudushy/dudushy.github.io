@@ -15,7 +15,7 @@ $white: #ffffff;
   --zoomRatio: 1;
   --responsiveUnit: calc(1vmin + 1vmax * var(--zoomRatio));
   --headerHeight: calc(var(--responsiveUnit) * 0);
-  --footerHeight: calc(var(--responsiveUnit) * 3);
+  --footerHeight: calc(var(--responsiveUnit) * 2);
   --scrollbarWidth: calc(var(--responsiveUnit) * 0.4);
   --defaultContentHeight: calc(var(--dynamicHeight) - var(--headerHeight) - var(--footerHeight));
   --dynamicHeight: 100vh;

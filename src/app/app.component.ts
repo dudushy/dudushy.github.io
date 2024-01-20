@@ -21,6 +21,8 @@ export class AppComponent {
   theme = 'dark';
   hasScrollbar = false;
 
+  rainbowMatrixInterval = 25;
+
   constructor(
     private cdr: ChangeDetectorRef,
     public router: Router,
@@ -51,6 +53,7 @@ export class AppComponent {
 
       this.detectScrollbar();
       this.getZoomLevel();
+      this.rainbowMatrix(this.rainbowMatrixInterval);
     };
 
     window.onload = () => {
@@ -65,6 +68,7 @@ export class AppComponent {
 
       this.detectScrollbar();
       this.getZoomLevel();
+      this.rainbowMatrix(this.rainbowMatrixInterval);
     };
 
     window.onbeforeunload = (e) => {
@@ -182,5 +186,56 @@ export class AppComponent {
     if (lastScrollPosition) {
       main.scrollTop = lastScrollPosition;
     }
+  }
+
+  rainbowMatrix(ms: number): void {
+    console.log(`[${this.TITLE}#rainbowMatrix] ms`, ms);
+
+    const canvas = document.getElementById('rainbow-background') as HTMLCanvasElement;
+    canvas.remove();
+
+    const newCanvas = document.createElement('canvas');
+    newCanvas.id = 'rainbow-background';
+    newCanvas.style.cssText = 'position: absolute; top: 0; left: 0; z-index: -1;';
+
+    const contentDiv = document.getElementById('main-content') as HTMLDivElement;
+    contentDiv.appendChild(newCanvas);
+
+    newCanvas.height = window.innerHeight;
+    newCanvas.width = window.innerWidth;
+
+    const context = newCanvas.getContext('2d') as CanvasRenderingContext2D;
+    context.clearRect(0, 0, newCanvas.width, newCanvas.height);
+
+    const font = 'monospace';
+    const fontSize = 20;
+    context.font = `${fontSize}px ${font}`;
+
+    const cols = newCanvas.width;
+
+    const charSet = 'DUDUSHY'.split('');
+
+    const drops: string | any[] = [];
+    for (let col = 0; col < cols; col++) {
+      drops[col] = Math.floor(Math.random() * newCanvas.height);
+    }
+
+    setInterval(() => {
+      context.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      context.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+      for (let col = 0; col < drops.length; col++) {
+        const char = charSet[Math.floor(Math.random() * charSet.length)];
+
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        context.fillStyle = `rgb(${r}, ${g}, ${b})`;
+        context.fillText(char, col * fontSize, drops[col] * fontSize);
+
+        if (Math.random() > 0.99) { drops[col] = 0; }
+        drops[col]++;
+      }
+    }, ms);
   }
 }

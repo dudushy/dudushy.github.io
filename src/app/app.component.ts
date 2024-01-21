@@ -23,6 +23,11 @@ export class AppComponent {
 
   startExpanded = false;
 
+  dateTimeInterval: any = null;
+  dateTitle = '';
+  date = '';
+  time = '';
+
   constructor(
     private cdr: ChangeDetectorRef,
     public router: Router,
@@ -67,6 +72,11 @@ export class AppComponent {
 
       this.detectScrollbar();
       this.getZoomLevel();
+      this.updateDateTime();
+
+      this.dateTimeInterval = setInterval(() => {
+        this.updateDateTime();
+      }, 1000 * 30);
     };
 
     window.onbeforeunload = (e) => {
@@ -203,5 +213,31 @@ export class AppComponent {
       startElement.classList.add('collapsed');
       startElement.classList.remove('expanded');
     }
+  }
+
+  updateDateTime() {
+    console.log(`[${this.TITLE}#updateDateTime]`);
+
+    const now = new Date();
+    console.log(`[${this.TITLE}#updateDateTime] now`, now);
+
+    const dateTitle = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    console.log(`[${this.TITLE}#updateDateTime] dateTitle`, dateTitle);
+
+    const date = now.toLocaleDateString('en-US', { year: '2-digit', month: 'short', day: 'numeric' });
+    console.log(`[${this.TITLE}#updateDateTime] date`, date);
+
+    const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+    console.log(`[${this.TITLE}#updateDateTime] time`, time);
+
+    const splittedDate = date.replace(',', '').split(' ');
+    console.log(`[${this.TITLE}#updateDateTime] splittedDate`, splittedDate);
+
+    const formattedDate = `${splittedDate[1]}-${splittedDate[0]}-${splittedDate[2]}`;
+    console.log(`[${this.TITLE}#updateDateTime] formattedDate`, formattedDate);
+
+    this.dateTitle = dateTitle;
+    this.date = formattedDate;
+    this.time = time;
   }
 }

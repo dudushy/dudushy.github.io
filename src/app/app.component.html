@@ -14,23 +14,35 @@
       </div>
 
       <div class="taskbar-middle">
-        <a class="taskbar-icon" href="#">
-          <i class="bi bi-github"></i>
+        <a class="taskbar-icon" title="LinkedIn" href="https://www.linkedin.com/in/eduardo-talarico/" target="_blank">
+          <i class="bi bi-linkedin" [style.--networkColor]="'#0a66c2'"></i>
         </a>
 
-        <a class="taskbar-icon" href="#">
-          <i class="bi bi-discord"></i>
+        <a class="taskbar-icon" title="Discord" href="https://discordapp.com/users/564590102949658634" target="_blank">
+          <i class="bi bi-discord" [style.--networkColor]="'#5865f2'"></i>
+        </a>
+
+        <a class="taskbar-icon" title="GitHub" href="https://github.com/dudushy" target="_blank">
+          <i class="bi bi-github" [style.--networkColor]="'#fafafa'"></i>
+        </a>
+
+        <a class="taskbar-icon" title="Steam" href="https://steamcommunity.com/id/dudushy/" target="_blank">
+          <i class="bi bi-steam" [style.--networkColor]="'#00adee'"></i>
+        </a>
+
+        <a class="taskbar-icon" title="Spotify" href="https://open.spotify.com/user/u8cq59bsrp4cdmp2haxrxu9pi" target="_blank">
+          <i class="bi bi-spotify" [style.--networkColor]="'#1db954'"></i>
         </a>
       </div>
 
       <div class="taskbar-end">
-        <a class="taskbar-src" href="#" title="View source code">
+        <a class="taskbar-src" title="View source code" href="https://github.com/dudushy/dudushy.github.io" target="_blank">
           S<br>R<br>C
         </a>
 
-        <div class="taskbar-clock" title="Saturday, January, 20, 2024">
-          <div class="taskbar-time">03:45 PM</div>
-          <div class="taskbar-date">20-Jan-24</div>
+        <div class="taskbar-clock" title="{{dateTitle}}">
+          <div class="taskbar-time">{{time}}</div>
+          <div class="taskbar-date">{{date}}</div>
         </div>
       </div>
     </div>

@@ -152,14 +152,15 @@ footer {
       i {
         font-size: calc(var(--responsiveUnit) * 1.2);
         // color: green;
-        color: white;
+        color: $white;
       }
 
       &:hover {
         background: transparentize($color: $medium, $amount: 0.8);
 
         i {
-          color: $medium;
+          // color: $medium;
+          filter: brightness(0.6);
         }
       }
 
@@ -167,7 +168,8 @@ footer {
         background: transparentize($color: $dark, $amount: 0.5);
 
         i {
-          color: darken($color: $medium, $amount: 20%);
+          // color: darken($color: $medium, $amount: 20%);
+          filter: brightness(0.2);
         }
       }
     }
@@ -189,15 +191,17 @@ footer {
         // background: orange;
 
         i {
-          color: white;
           font-size: calc(var(--responsiveUnit) * 1.2);
+          color: var(--networkColor);
         }
 
         &:hover {
           background: transparentize($color: $medium, $amount: 0.8);
 
           i {
-            color: $medium;
+            // color: $medium;
+            // color: color-mix(in srgb, var(--networkColor), $black 80%);
+            filter: brightness(0.6);
           }
         }
 
@@ -205,7 +209,8 @@ footer {
           background: transparentize($color: $dark, $amount: 0.5);
 
           i {
-            color: darken($color: $medium, $amount: 20%);
+            // color: darken($color: $medium, $amount: 20%);
+            filter: brightness(0.2);
           }
         }
       }

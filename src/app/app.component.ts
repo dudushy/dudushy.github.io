@@ -21,6 +21,8 @@ export class AppComponent {
   theme = 'dark';
   hasScrollbar = false;
 
+  startExpanded = false;
+
   constructor(
     private cdr: ChangeDetectorRef,
     public router: Router,
@@ -181,6 +183,25 @@ export class AppComponent {
 
     if (lastScrollPosition) {
       main.scrollTop = lastScrollPosition;
+    }
+  }
+
+  toggleStart() {
+    console.log(`[${this.TITLE}#toggleStart] startExpanded`, this.startExpanded);
+
+    const startElement = document.getElementsByClassName('start')[0];
+    console.log(`[${this.TITLE}#toggleStart] startElement`, startElement);
+
+    if (!startElement) return;
+
+    this.startExpanded = !this.startExpanded;
+
+    if (this.startExpanded) {
+      startElement.classList.add('expanded');
+      startElement.classList.remove('collapsed');
+    } else {
+      startElement.classList.add('collapsed');
+      startElement.classList.remove('expanded');
     }
   }
 }

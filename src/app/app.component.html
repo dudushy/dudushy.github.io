@@ -6,8 +6,10 @@
   </div>
 
   <footer>
+    <div class="start"></div>
+
     <div class="taskbar">
-      <div class="taskbar-start">
+      <div class="taskbar-start" title="Start" (click)="toggleStart()">
         <i class="bi bi-grid-1x2-fill"></i>
       </div>
 
@@ -22,11 +24,11 @@
       </div>
 
       <div class="taskbar-end">
-        <a class="taskbar-src" href="#">
+        <a class="taskbar-src" href="#" title="View source code">
           S<br>R<br>C
         </a>
 
-        <div class="taskbar-clock">
+        <div class="taskbar-clock" title="Saturday, January, 20, 2024">
           <div class="taskbar-time">03:45 PM</div>
           <div class="taskbar-date">20-Jan-24</div>
         </div>

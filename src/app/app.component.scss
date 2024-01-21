@@ -62,14 +62,60 @@ main {
 }
 
 footer {
+  position: relative;
   // background: var(--footerGradient);
   // background: white;
   background: transparentize($color: $black, $amount: 0.4);
   @include fixedWidth(100%);
   @include fixedHeight(var(--footerHeight));
-  overflow: hidden;
+  // overflow: hidden;
   backdrop-filter: blur(calc(var(--responsiveUnit) * 0.4));
   // border-top: calc(var(--responsiveUnit) * 0.05) solid transparentize($color: $white, $amount: 0.2);
+
+  &,
+  * {
+    @include allVendors(user-select, none);
+  }
+
+  .start {
+    --animationDuration: 0.2s;
+    --startSize: calc(var(--responsiveUnit) * 22.5);
+
+    position: absolute;
+    // height: var(--startSize);
+    width: var(--startSize);
+    background: royalblue;
+    bottom: var(--footerHeight);
+    @include allVendors(transition, 0.2s ease-in);
+
+    &.expanded {
+      // height: var(--startSize);
+      animation: expand var(--animationDuration) ease forwards;
+    }
+
+    &.collapsed {
+      // height: 0;
+      animation: collapse var(--animationDuration) ease forwards;
+    }
+
+    @keyframes expand {
+      from {
+        height: 0;
+      }
+      to {
+        height: var(--startSize);
+      }
+    }
+
+    @keyframes collapse {
+      from {
+        height: var(--startSize);
+      }
+      to {
+        height: 0;
+      }
+    }
+  }
 
   .taskbar {
     --taskbarStartWidth: 4%;
@@ -88,6 +134,11 @@ footer {
     .taskbar-middle,
     .taskbar-end {
       height: 100%;
+
+      &,
+      * {
+        @include allVendors(transition, 0.2s ease-out);
+      }
     }
 
     .taskbar-start {
@@ -102,6 +153,22 @@ footer {
         font-size: calc(var(--responsiveUnit) * 1.2);
         // color: green;
         color: white;
+      }
+
+      &:hover {
+        background: transparentize($color: $medium, $amount: 0.8);
+
+        i {
+          color: $medium;
+        }
+      }
+
+      &:active {
+        background: transparentize($color: $dark, $amount: 0.5);
+
+        i {
+          color: darken($color: $medium, $amount: 20%);
+        }
       }
     }
 
@@ -125,6 +192,22 @@ footer {
           color: white;
           font-size: calc(var(--responsiveUnit) * 1.2);
         }
+
+        &:hover {
+          background: transparentize($color: $medium, $amount: 0.8);
+
+          i {
+            color: $medium;
+          }
+        }
+
+        &:active {
+          background: transparentize($color: $dark, $amount: 0.5);
+
+          i {
+            color: darken($color: $medium, $amount: 20%);
+          }
+        }
       }
     }
 
@@ -141,6 +224,15 @@ footer {
       .taskbar-src,
       .taskbar-clock {
         height: 100%;
+
+        &:hover {
+          background: transparentize($color: $medium, $amount: 0.8);
+          // color: $medium;
+        }
+
+        &:active {
+          background: transparentize($color: $light, $amount: 0.8);
+        }
       }
 
       .taskbar-src {

@@ -204,14 +204,23 @@ export class AppComponent {
 
     if (!startElement) return;
 
+    const startIconElement = document.getElementsByClassName('taskbarStart')[0];
+    console.log(`[${this.TITLE}#toggleStart] startIconElement`, startIconElement);
+
+    if (!startIconElement) return;
+
     this.startExpanded = !this.startExpanded;
 
     if (this.startExpanded) {
       startElement.classList.add('expanded');
       startElement.classList.remove('collapsed');
+      startIconElement.classList.add('expanded');
+      startIconElement.classList.remove('collapsed');
     } else {
       startElement.classList.add('collapsed');
       startElement.classList.remove('expanded');
+      startIconElement.classList.add('collapsed');
+      startIconElement.classList.remove('expanded');
     }
   }
 

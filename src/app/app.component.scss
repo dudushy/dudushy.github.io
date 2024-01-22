@@ -244,6 +244,10 @@ footer {
         display: flex;
         flex-direction: column;
 
+        .startAbout-list_content:last-child {
+          padding-bottom: calc(var(--responsiveUnit) * 1.25);
+        }
+
         .startAbout-list_title,
         .startAbout-list_item {
           width: 98%;

@@ -84,6 +84,12 @@ export class AppComponent {
 
       this.saveLastScrollPosition();
     };
+
+    window.onclick = (e) => {
+      console.log(`[${this.TITLE}#window.onclick] e`, e);
+
+      this.closeStart(e);
+    };
   }
 
   updateView(from: string) {
@@ -217,6 +223,36 @@ export class AppComponent {
       startIconElement.classList.add('expanded');
       startIconElement.classList.remove('collapsed');
     } else {
+      startElement.classList.add('collapsed');
+      startElement.classList.remove('expanded');
+      startIconElement.classList.add('collapsed');
+      startIconElement.classList.remove('expanded');
+    }
+  }
+
+  closeStart(event: any) {
+    console.log(`[${this.TITLE}#closeStart] event`, event);
+
+    console.log(`[${this.TITLE}#closeStart] startExpanded`, this.startExpanded);
+    if (!this.startExpanded) return;
+
+    const startElement = document.getElementsByClassName('start')[0];
+    console.log(`[${this.TITLE}#closeStart] startElement`, startElement);
+
+    if (!startElement) return;
+
+    const startIconElement = document.getElementsByClassName('taskbarStart')[0];
+    console.log(`[${this.TITLE}#closeStart] startIconElement`, startIconElement);
+
+    if (!startIconElement) return;
+
+    if (
+      event.target !== startElement &&
+      event.target !== startIconElement &&
+      !startElement.contains(event.target as Node) &&
+      !startIconElement.contains(event.target as Node)
+    ) {
+      this.startExpanded = false;
       startElement.classList.add('collapsed');
       startElement.classList.remove('expanded');
       startIconElement.classList.add('collapsed');

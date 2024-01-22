@@ -42,12 +42,6 @@ main {
   background: var(--mainGradient);
   z-index: -1;
   @include allVendors(animation, 50s spin linear infinite);
-
-  @keyframes spin {
-    to {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
 }
 
 #main-content {
@@ -95,7 +89,7 @@ footer {
     bottom: var(--footerHeight);
     @include allVendors(transition, 0.2s ease-in);
     overflow: hidden;
-    // opacity: 0;
+    opacity: 0;
 
     .startMore,
     .startAbout,
@@ -132,8 +126,8 @@ footer {
       .startKnowledge {
         height: 100%;
         width: var(--startKnowledgeWidth);
-        // background: lighten($color: $black, $amount: 12%);
-        background: yellow;
+        background: lighten($color: $black, $amount: 12%);
+        // background: yellow;
       }
     }
 
@@ -220,6 +214,7 @@ footer {
       bottom: 0;
       left: var(--startMoreWidth);
       overflow-y: auto;
+      overflow-x: hidden;
 
       &,
       * {
@@ -299,6 +294,7 @@ footer {
       bottom: 0;
       left: calc(var(--startMoreWidth) + var(--startAboutWidth));
       overflow-y: auto;
+      overflow-x: hidden;
 
       &,
       * {
@@ -322,6 +318,88 @@ footer {
         background-color: $light;
         border-radius: calc(var(--responsiveUnit) * 0.2);
         border: calc(var(--responsiveUnit) * 0.1) solid lighten($color: $black, $amount: 12%);
+      }
+
+      .startKnowledge-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .startKnowledge-grid_title,
+        .startKnowledge-grid_content {
+          width: 96%;
+        }
+
+        .startKnowledge-grid_title {
+          font-size: calc(var(--responsiveUnit) * 0.7);
+          font-weight: bold;
+          font-family: sans-serif;
+          color: $light;
+          padding: calc(var(--responsiveUnit) * 0.2);
+
+          &:first-child {
+            padding-top: calc(var(--responsiveUnit) * 0.4);
+          }
+        }
+
+        .startKnowledge-grid_content {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: calc(var(--responsiveUnit) * 0.2);
+          align-items: center;
+
+          &:last-child {
+            padding-bottom: calc(var(--responsiveUnit) * 1.25);
+          }
+
+          .startKnowledge-grid_item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // overflow: hidden;
+            height: calc(var(--responsiveUnit) * 3);
+            background: darken($color: $medium, $amount: 30%);
+            border: calc(var(--responsiveUnit) * 0.1) solid darken($color: $medium, $amount: 30%);
+
+            &:hover {
+              border-color: $light;
+              cursor: pointer;
+            }
+
+            .startKnowledge-grid_item_icon {
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              img {
+                width: 40%;
+                height: 40%;
+                object-fit: contain;
+              }
+            }
+
+            .startKnowledge-grid_item_text {
+              position: absolute;
+              // display: flex;
+              // align-items: center;
+              // justify-content: flex-start;
+              width: 100%;
+              bottom: calc(var(--responsiveUnit) * 0.05);
+              z-index: 1;
+              font-size: calc(var(--responsiveUnit) * 0.55);
+              text-indent: calc(var(--responsiveUnit) * 0.1);
+              font-family: sans-serif;
+              color: $light;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
       }
     }
   }
@@ -364,7 +442,8 @@ footer {
         color: $white;
       }
 
-      &:hover, &.expanded {
+      &:hover,
+      &.expanded {
         background: lighten($color: $black, $amount: 12%);
 
         i {
@@ -499,20 +578,30 @@ footer {
   }
 }
 
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 @keyframes StartExpand {
   from {
     height: 0;
+    opacity: 0;
   }
   to {
     height: var(--startSize);
+    opacity: 1;
   }
 }
 
 @keyframes StartCollapse {
   from {
     height: var(--startSize);
+    opacity: 1;
   }
   to {
     height: 0;
+    opacity: 0;
   }
 }

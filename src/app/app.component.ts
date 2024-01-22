@@ -76,7 +76,7 @@ export class AppComponent {
 
       this.dateTimeInterval = setInterval(() => {
         this.updateDateTime();
-      }, 1000 * 30);
+      }, 1000 * 60 / 4);
     };
 
     window.onbeforeunload = (e) => {

@@ -63,19 +63,24 @@ $white: #ffffff;
 //* MIXIN [END]
 
 //* SCROLLBAR [START]
-::-webkit-scrollbar {
+* {
+  scrollbar-width: var(--scrollbarWidth);
+  scrollbar-color: $dark $light;
+}
+
+*::-webkit-scrollbar {
   width: var(--scrollbarWidth);
 }
 
-::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: $dark;
 }
 
-::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   background: $light;
 }
 
-::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
   background: $medium;
 }
 //* SCROLLBAR [END]

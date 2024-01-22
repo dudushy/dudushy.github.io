@@ -42,12 +42,6 @@ main {
   background: var(--mainGradient);
   z-index: -1;
   @include allVendors(animation, 50s spin linear infinite);
-
-  @keyframes spin {
-    to {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
-  }
 }
 
 #main-content {
@@ -65,11 +59,12 @@ footer {
   position: relative;
   // background: var(--footerGradient);
   // background: white;
-  background: transparentize($color: $black, $amount: 0.4);
+  // background: transparentize($color: $black, $amount: 0.4);
+  background: lighten($color: $black, $amount: 6%);
   @include fixedWidth(100%);
   @include fixedHeight(var(--footerHeight));
   // overflow: hidden;
-  backdrop-filter: blur(calc(var(--responsiveUnit) * 0.4));
+  // backdrop-filter: blur(calc(var(--responsiveUnit) * 0.4));
   // border-top: calc(var(--responsiveUnit) * 0.05) solid transparentize($color: $white, $amount: 0.2);
 
   &,
@@ -80,39 +75,335 @@ footer {
   .start {
     --animationDuration: 0.2s;
     --startSize: calc(var(--responsiveUnit) * 22.5);
+    --startMoreWidth: calc(var(--startSize) * 0.1);
+    // --startMoreWidth: 10%;
+    --startAboutWidth: calc(var(--startSize) * 0.45);
+    // --startAboutWidth: 45%;
+    --startKnowledgeWidth: calc(var(--startSize) * 0.45);
+    // --startKnowledgeWidth: 45%;
 
     position: absolute;
     // height: var(--startSize);
     width: var(--startSize);
-    background: royalblue;
+    // background: royalblue;
     bottom: var(--footerHeight);
     @include allVendors(transition, 0.2s ease-in);
+    overflow: hidden;
+    opacity: 0;
+
+    .startMore,
+    .startAbout,
+    .startKnowledge {
+      height: 0;
+      width: 0;
+    }
 
     &.expanded {
       // height: var(--startSize);
-      animation: expand var(--animationDuration) ease forwards;
+      animation: StartExpand var(--animationDuration) ease forwards;
+      // opacity: 1;
+      background: lighten($color: $black, $amount: 6%);
+
+      .startMore {
+        height: 100%;
+        width: var(--startMoreWidth);
+        background: lighten($color: $black, $amount: 12%);
+
+        &:hover {
+          background: lighten($color: $black, $amount: 18%);
+          box-shadow: 0 0 calc(var(--responsiveUnit) * 0.4) calc(var(--responsiveUnit) * 0.1)
+            lighten($color: $black, $amount: 4%);
+        }
+      }
+
+      .startAbout {
+        height: 100%;
+        width: var(--startAboutWidth);
+        background: lighten($color: $black, $amount: 12%);
+        // background: green;
+      }
+
+      .startKnowledge {
+        height: 100%;
+        width: var(--startKnowledgeWidth);
+        background: lighten($color: $black, $amount: 12%);
+        // background: yellow;
+      }
     }
 
     &.collapsed {
       // height: 0;
-      animation: collapse var(--animationDuration) ease forwards;
+      animation: StartCollapse var(--animationDuration) ease forwards;
+
+      .startMore,
+      .startAbout,
+      .startKnowledge {
+        height: 0;
+        width: 0;
+      }
     }
 
-    @keyframes expand {
-      from {
-        height: 0;
+    .startMore {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      // background: red;
+      // height: 100%;
+      // width: var(--startMoreWidth);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &,
+      * {
+        @include allVendors(transition, 0.2s ease-in-out);
       }
-      to {
-        height: var(--startSize);
+
+      .startMore-item {
+        // background: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // width: 100%;
+        color: $light;
+
+        &:hover {
+          background: darken($color: $medium, $amount: 30%);
+          cursor: pointer;
+        }
+
+        .startMore-item_icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          // width: 100%;
+          @include fixedWidth(var(--startMoreWidth));
+          // background: blue;
+          height: calc(var(--responsiveUnit) * 2);
+
+          i {
+            font-size: calc(var(--responsiveUnit) * 1.3);
+          }
+        }
+
+        .startMore-item_text {
+          overflow: hidden;
+          width: 0;
+          white-space: nowrap;
+          font-size: calc(var(--responsiveUnit) * 0.8);
+          font-family: sans-serif;
+        }
+      }
+
+      &:hover {
+        width: calc(var(--startMoreWidth) * 4);
+
+        .startMore-item {
+          .startMore-item_text {
+            width: inherit;
+          }
+        }
       }
     }
 
-    @keyframes collapse {
-      from {
-        height: var(--startSize);
+    .startAbout {
+      --startAboutScrollbarWidth: calc(var(--responsiveUnit) * 0.25);
+
+      position: absolute;
+      bottom: 0;
+      left: var(--startMoreWidth);
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &,
+      * {
+        @include allVendors(transition, 0.1s ease-out);
       }
-      to {
-        height: 0;
+
+      & {
+        scrollbar-width: var(--startAboutScrollbarWidth);
+        scrollbar-color: $light lighten($color: $black, $amount: 12%);
+      }
+
+      &::-webkit-scrollbar {
+        width: var(--startAboutScrollbarWidth);
+      }
+
+      &::-webkit-scrollbar-track {
+        background: lighten($color: $black, $amount: 12%);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $light;
+        border-radius: calc(var(--responsiveUnit) * 0.2);
+        border: calc(var(--responsiveUnit) * 0.1) solid lighten($color: $black, $amount: 12%);
+      }
+
+      .startAbout-list {
+        display: flex;
+        flex-direction: column;
+
+        .startAbout-list_content:last-child {
+          padding-bottom: calc(var(--responsiveUnit) * 1.25);
+        }
+
+        .startAbout-list_title,
+        .startAbout-list_item {
+          width: 98%;
+
+          &:hover {
+            background: darken($color: $medium, $amount: 30%);
+            cursor: pointer;
+          }
+        }
+
+        .startAbout-list_title {
+          font-size: calc(var(--responsiveUnit) * 0.7);
+          font-weight: bold;
+          font-family: sans-serif;
+          color: $light;
+          padding: calc(var(--responsiveUnit) * 0.2);
+
+          &:first-child {
+            padding-top: calc(var(--responsiveUnit) * 0.4);
+          }
+        }
+
+        .startAbout-list_item {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: calc(var(--responsiveUnit) * 0.2);
+
+          .startAbout-list_item_icon {
+            font-size: calc(var(--responsiveUnit) * 0.6);
+            color: var(--startAboutIconColor);
+            margin-right: calc(var(--responsiveUnit) * 0.2);
+          }
+
+          .startAbout-list_item_text {
+            font-size: calc(var(--responsiveUnit) * 0.6);
+            font-family: sans-serif;
+            color: $light;
+          }
+        }
+      }
+    }
+
+    .startKnowledge {
+      --startKnowledgeScrollbarWidth: calc(var(--responsiveUnit) * 0.25);
+
+      position: absolute;
+      bottom: 0;
+      left: calc(var(--startMoreWidth) + var(--startAboutWidth));
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &,
+      * {
+        @include allVendors(transition, 0.1s ease-out);
+      }
+
+      & {
+        scrollbar-width: var(--startKnowledgeScrollbarWidth);
+        scrollbar-color: $light lighten($color: $black, $amount: 12%);
+      }
+
+      &::-webkit-scrollbar {
+        width: var(--startKnowledgeScrollbarWidth);
+      }
+
+      &::-webkit-scrollbar-track {
+        background: lighten($color: $black, $amount: 12%);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $light;
+        border-radius: calc(var(--responsiveUnit) * 0.2);
+        border: calc(var(--responsiveUnit) * 0.1) solid lighten($color: $black, $amount: 12%);
+      }
+
+      .startKnowledge-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .startKnowledge-grid_title,
+        .startKnowledge-grid_content {
+          width: 96%;
+        }
+
+        .startKnowledge-grid_title {
+          font-size: calc(var(--responsiveUnit) * 0.7);
+          font-weight: bold;
+          font-family: sans-serif;
+          color: $light;
+          padding: calc(var(--responsiveUnit) * 0.2);
+
+          &:first-child {
+            padding-top: calc(var(--responsiveUnit) * 0.4);
+          }
+        }
+
+        .startKnowledge-grid_content {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: calc(var(--responsiveUnit) * 0.2);
+          align-items: center;
+
+          &:last-child {
+            padding-bottom: calc(var(--responsiveUnit) * 1.25);
+          }
+
+          .startKnowledge-grid_item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            // overflow: hidden;
+            height: calc(var(--responsiveUnit) * 3);
+            background: darken($color: $medium, $amount: 30%);
+            border: calc(var(--responsiveUnit) * 0.1) solid darken($color: $medium, $amount: 30%);
+
+            &:hover {
+              border-color: $light;
+              cursor: pointer;
+            }
+
+            .startKnowledge-grid_item_icon {
+              position: absolute;
+              inset: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              img {
+                width: 40%;
+                height: 40%;
+                object-fit: contain;
+              }
+            }
+
+            .startKnowledge-grid_item_text {
+              position: absolute;
+              // display: flex;
+              // align-items: center;
+              // justify-content: flex-start;
+              width: 100%;
+              bottom: calc(var(--responsiveUnit) * 0.05);
+              z-index: 1;
+              font-size: calc(var(--responsiveUnit) * 0.55);
+              text-indent: calc(var(--responsiveUnit) * 0.1);
+              font-family: sans-serif;
+              color: $light;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
       }
     }
   }
@@ -130,9 +421,9 @@ footer {
     // justify-content: space-between;
     align-items: center;
 
-    .taskbar-start,
-    .taskbar-middle,
-    .taskbar-end {
+    .taskbarStart,
+    .taskbarMiddle,
+    .taskbarEnd {
       height: 100%;
 
       &,
@@ -141,7 +432,7 @@ footer {
       }
     }
 
-    .taskbar-start {
+    .taskbarStart {
       width: var(--taskbarStartWidth);
       // background: yellow;
       display: flex;
@@ -152,34 +443,37 @@ footer {
       i {
         font-size: calc(var(--responsiveUnit) * 1.2);
         // color: green;
-        color: white;
+        color: $white;
       }
 
-      &:hover {
-        background: transparentize($color: $medium, $amount: 0.8);
+      &:hover,
+      &.expanded {
+        background: lighten($color: $black, $amount: 12%);
 
         i {
-          color: $medium;
+          // color: $medium;
+          filter: brightness(0.6);
         }
       }
 
       &:active {
-        background: transparentize($color: $dark, $amount: 0.5);
+        background: lighten($color: $black, $amount: 10%);
 
         i {
-          color: darken($color: $medium, $amount: 20%);
+          // color: darken($color: $medium, $amount: 20%);
+          filter: brightness(0.2);
         }
       }
     }
 
-    .taskbar-middle {
+    .taskbarMiddle {
       width: var(--taskbarMiddleWidth);
       // background: purple;
       display: flex;
       align-items: center;
       justify-content: flex-start;
 
-      .taskbar-icon {
+      .taskbarMiddle-icon {
         height: 100%;
         display: flex;
         align-items: center;
@@ -189,29 +483,32 @@ footer {
         // background: orange;
 
         i {
-          color: white;
           font-size: calc(var(--responsiveUnit) * 1.2);
+          color: var(--networkColor);
         }
 
         &:hover {
-          background: transparentize($color: $medium, $amount: 0.8);
+          background: lighten($color: $black, $amount: 12%);
 
           i {
-            color: $medium;
+            // color: $medium;
+            // color: color-mix(in srgb, var(--networkColor), $black 80%);
+            filter: brightness(0.6);
           }
         }
 
         &:active {
-          background: transparentize($color: $dark, $amount: 0.5);
+          background: lighten($color: $black, $amount: 10%);
 
           i {
-            color: darken($color: $medium, $amount: 20%);
+            // color: darken($color: $medium, $amount: 20%);
+            filter: brightness(0.2);
           }
         }
       }
     }
 
-    .taskbar-end {
+    .taskbarEnd {
       --srcWidth: 20%;
       --clockWidth: 80%;
 
@@ -221,21 +518,21 @@ footer {
       align-items: center;
       justify-content: flex-end;
 
-      .taskbar-src,
-      .taskbar-clock {
+      .taskbarEnd-src,
+      .taskbarEnd-clock {
         height: 100%;
 
         &:hover {
-          background: transparentize($color: $medium, $amount: 0.8);
+          background: lighten($color: $black, $amount: 12%);
           // color: $medium;
         }
 
         &:active {
-          background: transparentize($color: $light, $amount: 0.8);
+          background: lighten($color: $black, $amount: 24%);
         }
       }
 
-      .taskbar-src {
+      .taskbarEnd-src {
         width: var(--srcWidth);
         height: 100%;
         // background: royalblue;
@@ -248,7 +545,7 @@ footer {
         text-decoration: none;
       }
 
-      .taskbar-clock {
+      .taskbarEnd-clock {
         width: var(--clockWidth);
         height: 100%;
         // background: brown;
@@ -260,8 +557,8 @@ footer {
         color: white;
         font-family: sans-serif;
 
-        .taskbar-time,
-        .taskbar-date {
+        .taskbarEnd-clock_time,
+        .taskbarEnd-clock_date {
           height: 50%;
           white-space: nowrap;
           // overflow: hidden;
@@ -271,16 +568,44 @@ footer {
           align-items: flex-end;
         }
 
-        .taskbar-time {
+        .taskbarEnd-clock_time {
           font-size: calc(var(--responsiveUnit) * 0.7);
           // align-items: flex-end;
         }
 
-        .taskbar-date {
+        .taskbarEnd-clock_date {
           font-size: calc(var(--responsiveUnit) * 0.65);
           // align-items: flex-start;
         }
       }
     }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes StartExpand {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--startSize);
+    opacity: 1;
+  }
+}
+
+@keyframes StartCollapse {
+  from {
+    height: var(--startSize);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
   }
 }

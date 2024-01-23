@@ -45,13 +45,22 @@ main {
 }
 
 #main-content {
+  position: relative;
   @include fixedWidth(100%);
-  min-height: unset;
-  // background: var(--contentGradient);
-  // background: red;
+  // min-height: unset;
+  min-height: var(--defaultContentHeight);
 
   router-outlet {
     display: none;
+  }
+
+  .window {
+    // display: none;
+    position: absolute;
+    inset: calc(var(--responsiveUnit) * 1.5);
+    background: red;
+    overflow: hidden;
+    overflow-y: scroll;
   }
 }
 
@@ -94,8 +103,9 @@ footer {
     .startMore,
     .startAbout,
     .startKnowledge {
-      height: 0;
-      width: 0;
+      // height: 0;
+      // width: 0;
+      display: none;
     }
 
     &.expanded {
@@ -215,6 +225,7 @@ footer {
       left: var(--startMoreWidth);
       overflow-y: auto;
       overflow-x: hidden;
+      display: block;
 
       &,
       * {
@@ -299,6 +310,7 @@ footer {
       left: calc(var(--startMoreWidth) + var(--startAboutWidth));
       overflow-y: auto;
       overflow-x: hidden;
+      display: block;
 
       &,
       * {

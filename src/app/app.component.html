@@ -2,7 +2,13 @@
   <div id="main-background"></div>
 
   <div id="main-content">
-    <router-outlet></router-outlet>
+    <div id="desktop"></div>
+
+    <div class="window" *ngFor="let page of allPages" id="{{page['path']}}">
+      <ng-component *ngComponentOutlet="page['component']"></ng-component>
+
+      <!-- <router-outlet></router-outlet> -->
+    </div>
   </div>
 
   <footer>

@@ -29,16 +29,7 @@
     }
 
     #loader.loaded {
-      animation: fade 0.5s linear forwards;
-      animation-delay: 1s;
-    }
-
-    #loader.loaded .logo {
-      animation: grow 1.5s linear forwards;
-    }
-
-    #loader.loaded .title .bar {
-      animation: shrink 1.5s linear forwards;
+      animation: fade 1.5s linear forwards;
     }
 
     #loader .logo {
@@ -191,33 +182,13 @@
       0% {
         opacity: 1;
       }
-
+      50% {
+        opacity: 1;
+        filter: brightness(0);
+      }
       100% {
         opacity: 0;
-      }
-    }
-
-    @keyframes grow {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(4) rotate(1turn);
-      }
-
-      100% {
-        transform: scale(8) rotate(2turn);
-      }
-    }
-
-    @keyframes shrink {
-      0% {
-        transform: scale(1);
-      }
-
-      100% {
-        transform: scale(0);
+        filter: brightness(0);
       }
     }
   </style>
@@ -238,7 +209,7 @@
     </div>
 
     <div class="title">
-      <span>shy</span>OS
+      <span>SHY</span>OS
     </div>
 
     <div class="bar">
@@ -254,6 +225,6 @@
   </div>
 
   <app-root></app-root>
-<script src="polyfills-RX4V3J3S.js" type="module"></script><script src="main-3LDDZYGJ.js" type="module"></script></body>
+<script src="polyfills-RX4V3J3S.js" type="module"></script><script src="main-CKIV3VCS.js" type="module"></script></body>
 
 </html>

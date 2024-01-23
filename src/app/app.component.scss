@@ -54,13 +54,20 @@ main {
     display: none;
   }
 
-  .window {
-    // display: none;
+  #window {
     position: absolute;
     inset: calc(var(--responsiveUnit) * 1.5);
     background: red;
     overflow: hidden;
     overflow-y: scroll;
+
+    &.minimizeWindow {
+      display: none;
+    }
+
+    & > .hideWindow {
+      display: none;
+    }
   }
 }
 

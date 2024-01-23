@@ -21,6 +21,8 @@ export class AppComponent {
   theme = 'dark';
   hasScrollbar = false;
 
+  selectedWindow: any = null;
+
   startExpanded = false;
 
   dateTimeInterval: any = null;
@@ -301,5 +303,11 @@ export class AppComponent {
     setTimeout(() => {
       loader.style.display = 'none';
     }, 1500);
+  }
+
+  openWindow(window: any) {
+    console.log(`[${this.TITLE}#openWindow] window`, window);
+
+    this.selectedWindow = window;
   }
 }

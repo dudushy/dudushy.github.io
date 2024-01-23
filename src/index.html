@@ -14,9 +14,244 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <style>
+    #loader {
+      background: #000000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      z-index: 9999;
+    }
+
+    #loader.loaded {
+      animation: fade 0.5s linear forwards;
+      animation-delay: 1s;
+    }
+
+    #loader.loaded .logo {
+      animation: grow 1.5s linear forwards;
+    }
+
+    #loader.loaded .title .bar {
+      animation: shrink 1.5s linear forwards;
+    }
+
+    #loader .logo {
+      --logoSize: calc(var(--responsiveUnit) * 5.5);
+
+      height: var(--logoSize);
+      width: var(--logoSize);
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: calc(var(--responsiveUnit) * 1);
+      z-index: 1;
+    }
+
+    #loader .logo .face {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #loader .logo .eyes {
+      display: flex;
+      justify-content: center;
+    }
+
+    #loader .logo .eye {
+      --eyeSize: calc(var(--logoSize) * 0.3);
+
+      height: var(--eyeSize);
+      width: var(--eyeSize);
+      border-radius: 50%;
+      background: #000000;
+      margin-inline: calc(var(--eyeSize) * 0.3);
+      margin-top: calc(var(--eyeSize) * 0.4);
+    }
+
+    #loader .logo .mouth {
+      --mouthSize: calc(var(--logoSize) * 0.2);
+
+      height: calc(var(--mouthSize) * 1.5);
+      width: var(--mouthSize);
+      border-radius: 50%;
+      background: #000000;
+      margin-top: calc(var(--mouthSize) * 0.5);
+    }
+
+    #loader .title {
+      color: #808080;
+      text-align: center;
+      font-family: "Courier New";
+      font-size: calc(var(--responsiveUnit) * 2);
+      border-top: calc(var(--responsiveUnit) * 0.05) solid #808080;
+      border-bottom: calc(var(--responsiveUnit) * 0.05) solid #808080;
+      padding-inline: calc(var(--responsiveUnit) * 1.5);
+      padding-block: calc(var(--responsiveUnit) * 0.25);
+      user-select: none;
+    }
+
+    #loader .title span {
+      font-family: "Lucida Console";
+      color: #ffffff;
+    }
+
+    #loader .bar {
+      --barSize: calc(var(--responsiveUnit) * 9);
+      --barMargin: calc(var(--responsiveUnit) * 0.5);
+      --barTiles: 8;
+
+      height: calc(var(--barSize) / 8);
+      width: var(--barSize);
+      margin-top: calc(var(--responsiveUnit) * 1);
+      border: calc(var(--responsiveUnit) * 0.1) solid #ffffff;
+      border-radius: calc(var(--responsiveUnit) * 0.2);
+      display: flex;
+      align-items: center;
+    }
+
+    #loader .bar .tile {
+      --tileWidth: calc(var(--barSize) * var(--barTiles) - var(--barMargin) * 2);
+
+      height: 80%;
+      width: var(--tileWidth);
+      margin-left: calc(var(--barMargin) / 2);
+      animation: blink 3s cubic-bezier(0, 1, 0, 1) infinite;
+    }
+
+    #loader .bar .tile:first-child {
+      margin-left: calc(var(--barMargin) / 2);
+    }
+
+    #loader .bar .tile:last-child {
+      margin-right: calc(var(--barMargin) / 2);
+    }
+
+    #loader .bar .tile:nth-child(1) {
+      animation-delay: 0.25s;
+    }
+
+    #loader .bar .tile:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    #loader .bar .tile:nth-child(3) {
+      animation-delay: 0.75s;
+    }
+
+    #loader .bar .tile:nth-child(4) {
+      animation-delay: 1s;
+    }
+
+    #loader .bar .tile:nth-child(5) {
+      animation-delay: 1.25s;
+    }
+
+    #loader .bar .tile:nth-child(6) {
+      animation-delay: 1.5s;
+    }
+
+    #loader .bar .tile:nth-child(7) {
+      animation-delay: 1.75s;
+    }
+
+    #loader .bar .tile:nth-child(8) {
+      animation-delay: 2s;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 0;
+        background: #808080;
+      }
+
+      50% {
+        opacity: 1;
+        background: #808080;
+      }
+
+      100% {
+        opacity: 0;
+        background: #808080;
+      }
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes grow {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(4) rotate(1turn);
+      }
+
+      100% {
+        transform: scale(8) rotate(2turn);
+      }
+    }
+
+    @keyframes shrink {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div id="loader">
+    <div class="logo">
+      <div class="face">
+        <div class="eyes">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+
+        <div class="mouth"></div>
+      </div>
+    </div>
+
+    <div class="title">
+      <span>shy</span>OS
+    </div>
+
+    <div class="bar">
+      <div class="tile" id="1"></div>
+      <div class="tile" id="2"></div>
+      <div class="tile" id="3"></div>
+      <div class="tile" id="4"></div>
+      <div class="tile" id="5"></div>
+      <div class="tile" id="6"></div>
+      <div class="tile" id="7"></div>
+      <div class="tile" id="8"></div>
+    </div>
+  </div>
+
   <app-root></app-root>
 </body>
 

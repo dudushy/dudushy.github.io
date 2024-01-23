@@ -63,6 +63,8 @@ export class AppComponent {
     window.onload = () => {
       console.log(`[${this.TITLE}#window.onload]`);
 
+      this.stopLoading();
+
       const url = this.router.url.replace('/', '');
       console.log(`[${this.TITLE}#window.onload] url`, url);
 
@@ -284,5 +286,20 @@ export class AppComponent {
     this.dateTitle = dateTitle;
     this.date = formattedDate;
     this.time = time;
+  }
+
+  stopLoading() {
+    console.log(`[${this.TITLE}#stopLoading]`);
+
+    const loader = document.getElementById('loader');
+    console.log(`[${this.TITLE}#stopLoading] loader`, loader);
+
+    if (!loader) return;
+
+    loader.className = 'loaded';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 1500);
   }
 }

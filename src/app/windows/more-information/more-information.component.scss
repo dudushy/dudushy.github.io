@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: var(--defaultContentHeight);
+  min-height: var(--windowContentHeight);
   padding: 1%;
   width: 100%;
   font-size: calc(var(--responsiveUnit) * 0.8);

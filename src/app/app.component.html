@@ -58,7 +58,13 @@
 
     <div id="window" [class.minimizeWindow]="openedWindow == null">
       <div class="window-toolbar">
-        <button (click)="openWindow(null)">X</button>
+        <div class="window-toolbar_title">
+          {{openedWindow.replace('-', '')}}
+        </div>
+
+        <div class="window-toolbar_close" (click)="openWindow(null)">
+          <i class="bi bi-x-lg"></i>
+        </div>
       </div>
 
       <div class="window-content">

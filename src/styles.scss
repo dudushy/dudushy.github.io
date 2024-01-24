@@ -20,7 +20,7 @@ $white: #ffffff;
   --defaultContentHeight: calc(var(--dynamicHeight) - var(--headerHeight) - var(--footerHeight));
   --dynamicHeight: 100vh;
   --windowInset: calc(var(--responsiveUnit) * 1.5);
-  --windowToolbarHeight: calc(var(--responsiveUnit) * 1.5);
+  --windowToolbarHeight: calc(var(--responsiveUnit) * 1.2);
   --windowContentHeight: calc(var(--dynamicHeight) - var(--footerHeight) - var(--windowToolbarHeight) - var(--windowInset) * 2);
 
   @supports (--css: variables) {

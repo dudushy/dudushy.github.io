@@ -65,6 +65,11 @@ main {
     flex-wrap: wrap;
     color: $light;
 
+    &,
+    * {
+      @include allVendors(user-select, none);
+    }
+
     .desktop-folder,
     .desktop-file {
       position: relative;
@@ -155,6 +160,7 @@ main {
     inset: var(--windowInset);
     background: red;
     overflow: hidden;
+    border-radius: calc(var(--responsiveUnit) * 0.3);
     // overflow-y: auto;
 
     &.minimizeWindow {
@@ -169,7 +175,50 @@ main {
       position: fixed;
       width: calc(100% - var(--windowInset) * 2);
       height: var(--windowToolbarHeight);
-      background: blue;
+      background: lighten($color: $black, $amount: 6%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      border-top-left-radius: calc(var(--responsiveUnit) * 0.3);
+      border-top-right-radius: calc(var(--responsiveUnit) * 0.3);
+
+      &,
+      * {
+        @include allVendors(user-select, none);
+      }
+
+      .window-toolbar_title {
+        height: 100%;
+        color: $light;
+        font-size: calc(var(--responsiveUnit) * 0.7);
+        font-family: sans-serif;
+        font-weight: bolder;
+        margin-left: calc(var(--responsiveUnit) * 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+      }
+
+      .window-toolbar_close {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(var(--windowToolbarHeight) * 3);
+        background: $danger;
+        color: $light;
+        font-size: calc(var(--responsiveUnit) * 0.7);
+        font-family: sans-serif;
+        font-weight: bolder;
+        @include allVendors(transition, 0.2s ease);
+
+        &:hover {
+          background: darken($color: $danger, $amount: 20%);
+          cursor: pointer;
+        }
+      }
     }
 
     .window-content {

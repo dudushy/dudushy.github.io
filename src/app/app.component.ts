@@ -22,6 +22,7 @@ export class AppComponent {
   hasScrollbar = false;
 
   selectedWindow: any = null;
+  openedWindow: any = null;
 
   startExpanded = false;
 
@@ -92,6 +93,7 @@ export class AppComponent {
     window.onclick = (e) => {
       console.log(`[${this.TITLE}#window.onclick] e`, e);
 
+      this.unselectWindow(e);
       this.closeStart(e);
     };
   }
@@ -250,12 +252,13 @@ export class AppComponent {
 
     if (!startIconElement) return;
 
-    if (
-      event.target !== startElement &&
+    const condition = event.target !== startElement &&
       event.target !== startIconElement &&
       !startElement.contains(event.target as Node) &&
-      !startIconElement.contains(event.target as Node)
-    ) {
+      !startIconElement.contains(event.target as Node);
+    console.log(`[${this.TITLE}#closeStart] condition`, condition);
+
+    if (condition) {
       this.startExpanded = false;
       startElement.classList.add('collapsed');
       startElement.classList.remove('expanded');
@@ -305,9 +308,42 @@ export class AppComponent {
     }, 1500);
   }
 
+  selectWindow(window: any) {
+    console.log(`[${this.TITLE}#selectWindow] window`, window);
+
+    this.selectedWindow = window;
+  }
+
   openWindow(window: any) {
     console.log(`[${this.TITLE}#openWindow] window`, window);
 
-    this.selectedWindow = window;
+    this.openedWindow = window;
+  }
+
+  unselectWindow(event: any) {
+    console.log(`[${this.TITLE}#unselectWindow] event`, event);
+
+    console.log(`[${this.TITLE}#unselectWindow] selectedWindow`, this.selectedWindow);
+    if (!this.selectedWindow) return;
+
+    const desktopItemElement = document.querySelector('.desktop-folder.selected, .desktop-file.selected');
+    console.log(`[${this.TITLE}#unselectWindow] desktopItemElement`, desktopItemElement);
+
+    if (!desktopItemElement) return;
+
+    const windowElement = document.getElementById('window');
+    console.log(`[${this.TITLE}#unselectWindow] windowElement`, windowElement);
+
+    if (!windowElement) return;
+
+    const condition = event.target !== desktopItemElement &&
+      event.target !== windowElement &&
+      !desktopItemElement.contains(event.target as Node) &&
+      !windowElement.contains(event.target as Node);
+    console.log(`[${this.TITLE}#unselectWindow] condition`, condition);
+
+    if (condition) {
+      this.selectedWindow = null;
+    }
   }
 }

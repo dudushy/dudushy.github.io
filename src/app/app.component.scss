@@ -54,19 +54,131 @@ main {
     display: none;
   }
 
+  #desktop {
+    height: 100%;
+    width: 100%;
+    // background: green;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    color: $light;
+
+    .desktop-folder,
+    .desktop-file {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: calc(var(--responsiveUnit) * 0.5);
+      // @include square(calc(var(--responsiveUnit) * 4.2));
+      height: calc(var(--responsiveUnit) * 4.2);
+      width: calc(var(--responsiveUnit) * 4.4);
+      background: none;
+      border: calc(var(--responsiveUnit) * 0.1) solid $void;
+      border-radius: calc(var(--responsiveUnit) * 0.3);
+      @include allVendors(transition, 0.1s ease-in-out);
+
+      &:hover {
+        background: transparentize($color: $light, $amount: 0.9);
+        border-color: $light;
+        cursor: pointer;
+      }
+
+      &.selected {
+        background: transparentize($color: $secondary, $amount: 0.8);
+        border-color: $white;
+
+        &:hover {
+          background: transparentize($color: $secondary, $amount: 0.6);
+          border-color: $white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .desktop-folder_text,
+    .desktop-file_text {
+      --textPaddingInline: calc(var(--responsiveUnit) * 0.1);
+
+      padding-inline: var(--textPaddingInline);
+      width: calc(100% - var(--textPaddingInline) * 2);
+      text-align: center;
+      position: absolute;
+      bottom: calc(var(--responsiveUnit) * 0.1);
+      font-size: calc(var(--responsiveUnit) * 0.5);
+      font-family: sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .desktop-folder {
+      .desktop-folder_mainIcon,
+      .desktop-folder_subIcon {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inset: calc(var(--responsiveUnit) * 0.8);
+        // background: red;
+      }
+
+      .desktop-folder_mainIcon {
+        font-size: calc(var(--responsiveUnit) * 2.5);
+        color: #fdb62a;
+      }
+
+      .desktop-folder_subIcon {
+        font-size: calc(var(--responsiveUnit) * 1.2);
+        color: var(--folderSubIconColor);
+      }
+    }
+
+    .desktop-file {
+      .desktop-file_mainIcon {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        inset: calc(var(--responsiveUnit) * 0.8);
+        font-size: calc(var(--responsiveUnit) * 2);
+        color: var(--fileMainIconColor);
+      }
+    }
+  }
+
   #window {
     position: absolute;
-    inset: calc(var(--responsiveUnit) * 1.5);
+    inset: var(--windowInset);
     background: red;
     overflow: hidden;
-    overflow-y: scroll;
+    // overflow-y: auto;
 
     &.minimizeWindow {
       display: none;
     }
 
-    & > .hideWindow {
+    .hideWindow {
       display: none;
+    }
+
+    .window-toolbar {
+      position: fixed;
+      width: calc(100% - var(--windowInset) * 2);
+      height: var(--windowToolbarHeight);
+      background: blue;
+    }
+
+    .window-content {
+      width: 100%;
+      margin-top: var(--windowToolbarHeight);
+      height: var(--windowContentHeight);
+      background: grey;
+      overflow: hidden;
+      overflow-y: auto;
     }
   }
 }

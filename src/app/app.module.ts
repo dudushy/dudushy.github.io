@@ -9,13 +9,23 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SvgRendererComponent } from './components/svg-renderer/svg-renderer.component';
 
+import { FormationComponent } from './windows/formation/formation.component';
+import { ExperienceComponent } from './windows/experience/experience.component';
+import { MoreInformationComponent } from './windows/more-information/more-information.component';
+import { ProjectsComponent } from './windows/projects/projects.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     HomeComponent,
     NotFoundComponent,
-    SvgRendererComponent
+    SvgRendererComponent,
+
+    FormationComponent,
+    ExperienceComponent,
+    MoreInformationComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

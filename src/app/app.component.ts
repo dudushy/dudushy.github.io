@@ -23,6 +23,7 @@ export class AppComponent {
 
   selectedWindow: any = null;
   openedWindow: any = null;
+  openedWindowTitle = '';
 
   startExpanded = false;
 
@@ -318,6 +319,7 @@ export class AppComponent {
     console.log(`[${this.TITLE}#openWindow] window`, window);
 
     this.openedWindow = window;
+    this.openedWindowTitle = window?.replace(/-/g, ' ');
   }
 
   unselectWindow(event: any) {

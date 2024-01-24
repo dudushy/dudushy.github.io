@@ -59,7 +59,7 @@
     <div id="window" [class.minimizeWindow]="openedWindow == null">
       <div class="window-toolbar">
         <div class="window-toolbar_title">
-          {{openedWindow.replace('-', '')}}
+          {{openedWindowTitle}}
         </div>
 
         <div class="window-toolbar_close" (click)="openWindow(null)">

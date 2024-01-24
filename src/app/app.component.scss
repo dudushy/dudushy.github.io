@@ -24,8 +24,8 @@ main {
       // top: 0;
       // left: 0;
       z-index: 1;
-      background: black;
-      color: white;
+      background: $black;
+      color: $white;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -661,6 +661,7 @@ footer {
         width: calc(var(--responsiveUnit) * 2.5);
         margin-left: calc(var(--responsiveUnit) * 0.1);
         // background: orange;
+        color: $white;
 
         i {
           font-size: calc(var(--responsiveUnit) * 1.2);
@@ -719,7 +720,7 @@ footer {
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
+        color: $white;
         font-size: calc(var(--responsiveUnit) * 0.4);
         font-weight: bold;
         text-decoration: none;
@@ -734,7 +735,7 @@ footer {
         align-items: center;
         justify-content: center;
         // justify-content: space-evenly;
-        color: white;
+        color: $white;
         font-family: sans-serif;
 
         .taskbarEnd-clock_time,

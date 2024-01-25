@@ -163,8 +163,14 @@ main {
     border-radius: calc(var(--responsiveUnit) * 0.3);
     // overflow-y: auto;
 
-    &.minimizeWindow {
-      display: none;
+    &[minimizeWindow="true"] {
+      // display: none;
+      animation: disappear 0.2s ease forwards;
+    }
+
+    &[minimizeWindow="false"] {
+      // display: none;
+      animation: appear 0.2s ease forwards;
     }
 
     .hideWindow {
@@ -787,6 +793,32 @@ footer {
   }
   to {
     height: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    height: 0;
+    // width: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--windowContentHeight);
+    // width: inherit;
+    opacity: 1;
+  }
+}
+
+@keyframes disappear {
+  from {
+    height: var(--windowContentHeight);
+    // width: inherit;
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    // width: 0;
     opacity: 0;
   }
 }

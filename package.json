@@ -4,7 +4,9 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng build",
-    "deploy": "bash ./build_n_deploy.sh"
+    "deploy": "bash ./build_n_deploy.sh",
+    "docker-build": "docker build -t dudushy.github.io .",
+    "docker-run": "docker run -p 4200:4200 dudushy.github.io"
   },
   "private": true,
   "dependencies": {

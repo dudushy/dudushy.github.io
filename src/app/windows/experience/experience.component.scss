@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: var(--windowContentHeight);
+  padding: 1%;
+  width: 100%;
+  font-size: calc(var(--responsiveUnit) * 0.8);
+}
+
+i {
+  font-size: calc(var(--responsiveUnit) * 2);
+  color: #500091;
+}

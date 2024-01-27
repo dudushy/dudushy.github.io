@@ -2,7 +2,78 @@
   <div id="main-background"></div>
 
   <div id="main-content">
-    <router-outlet></router-outlet>
+    <div id="desktop">
+      <div class="desktop-folder" (dblclick)="openWindow('formation')" (click)="selectWindow('formation')" [class.selected]="selectedWindow == 'formation'">
+        <div class="desktop-folder_mainIcon">
+          <i class="bi bi-folder-fill"></i>
+        </div>
+
+        <div class="desktop-folder_text">
+          Formation
+        </div>
+
+        <div class="desktop-folder_subIcon" [style.--folderSubIconColor]="'#000'">
+          <i class="bi bi-mortarboard-fill"></i>
+        </div>
+      </div>
+
+      <div class="desktop-folder" (dblclick)="openWindow('experience')" (click)="selectWindow('experience')" [class.selected]="selectedWindow == 'experience'">
+        <div class="desktop-folder_mainIcon">
+          <i class="bi bi-folder-fill"></i>
+        </div>
+
+        <div class="desktop-folder_text">
+          Experience
+        </div>
+
+        <div class="desktop-folder_subIcon" [style.--folderSubIconColor]="'#500091'">
+          <i class="bi bi-award-fill"></i>
+        </div>
+      </div>
+
+      <div class="desktop-file" (dblclick)="openWindow('more-information')" (click)="selectWindow('more-information')" [class.selected]="selectedWindow == 'more-information'">
+        <div class="desktop-file_mainIcon" [style.--fileMainIconColor]="'#b8e6c3'">
+          <i class="bi bi-file-earmark-plus-fill"></i>
+        </div>
+
+        <div class="desktop-file_text">
+          More Information
+        </div>
+      </div>
+
+      <div class="desktop-folder" (dblclick)="openWindow('projects')" (click)="selectWindow('projects')" [class.selected]="selectedWindow == 'projects'">
+        <div class="desktop-folder_mainIcon">
+          <i class="bi bi-folder-fill"></i>
+        </div>
+
+        <div class="desktop-folder_text">
+          Projects
+        </div>
+
+        <div class="desktop-folder_subIcon" [style.--folderSubIconColor]="'#005961'">
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+        </div>
+      </div>
+    </div>
+
+    <div id="window" [attr.minimizeWindow]="openedWindow == null">
+      <div class="window-toolbar">
+        <div class="window-toolbar_title">
+          {{openedWindowTitle}}
+        </div>
+
+        <div class="window-toolbar_close" (click)="openWindow(null)">
+          <i class="bi bi-x-lg"></i>
+        </div>
+      </div>
+
+      <div class="window-content">
+        <app-formation [class.hideWindow]="openedWindow != 'formation'"></app-formation>
+        <app-experience [class.hideWindow]="openedWindow != 'experience'"></app-experience>
+        <app-more-information [class.hideWindow]="openedWindow != 'more-information'"></app-more-information>
+        <app-projects [class.hideWindow]="openedWindow != 'projects'"></app-projects>
+      </div>
+    </div>
   </div>
 
   <footer>

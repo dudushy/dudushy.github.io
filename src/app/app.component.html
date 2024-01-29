@@ -68,6 +68,9 @@
       </div>
 
       <div class="window-content">
+        <app-me [class.hideWindow]="openedWindow != 'me'"></app-me>
+        <app-language [class.hideWindow]="openedWindow != 'language'"></app-language>
+        <app-theme [class.hideWindow]="openedWindow != 'theme'"></app-theme>
         <app-formation [class.hideWindow]="openedWindow != 'formation'"></app-formation>
         <app-experience [class.hideWindow]="openedWindow != 'experience'"></app-experience>
         <app-more-information [class.hideWindow]="openedWindow != 'more-information'"></app-more-information>
@@ -92,7 +95,7 @@
         </div>
 
         <div class="startMore-content">
-          <div class="startMore-item">
+          <div class="startMore-item" (click)="openWindow('me')">
             <div class="startMore-item_icon">
               <i class="bi bi-person-fill"></i>
             </div>
@@ -102,7 +105,7 @@
             </div>
           </div>
 
-          <div class="startMore-item">
+          <div class="startMore-item" (click)="openWindow('language')">
             <div class="startMore-item_icon">
               <i class="bi bi-translate"></i>
             </div>
@@ -112,7 +115,7 @@
             </div>
           </div>
 
-          <div class="startMore-item">
+          <div class="startMore-item" (click)="openWindow('theme')">
             <div class="startMore-item_icon">
               <i class="bi bi-palette-fill"></i>
             </div>

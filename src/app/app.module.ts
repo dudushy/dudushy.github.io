@@ -13,6 +13,9 @@ import { FormationComponent } from './windows/formation/formation.component';
 import { ExperienceComponent } from './windows/experience/experience.component';
 import { MoreInformationComponent } from './windows/more-information/more-information.component';
 import { ProjectsComponent } from './windows/projects/projects.component';
+import { MeComponent } from './windows/me/me.component';
+import { LanguageComponent } from './windows/language/language.component';
+import { ThemeComponent } from './windows/theme/theme.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { ProjectsComponent } from './windows/projects/projects.component';
     FormationComponent,
     ExperienceComponent,
     MoreInformationComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    MeComponent,
+    LanguageComponent,
+    ThemeComponent
   ],
   imports: [
     BrowserModule,

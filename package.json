@@ -2,11 +2,13 @@
   "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --host 0.0.0.0",
+    "start": "ng serve --host 0.0.0.0 --disable-host-check",
     "build": "ng build",
     "deploy": "bash ./build_n_deploy.sh",
-    "docker-build": "docker build -t dudushy.github.io .",
-    "docker-run": "docker run -p 4200:4200 dudushy.github.io"
+    "docker": "docker-compose up",
+    "docker-build": "docker build -t dudushy.github.io -f Dockerfile.dev .",
+    "docker-run": "docker run -p 4200:4200 dudushy.github.io -v .:/app",
+    "docker-clear": "docker system prune -a -f"
   },
   "private": true,
   "dependencies": {

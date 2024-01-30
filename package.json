@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "deploy": "bash ./build_n_deploy.sh",
     "docker-build": "docker build -t dudushy.github.io .",

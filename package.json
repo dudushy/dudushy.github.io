@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --host 0.0.0.0 --disable-host-check",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
     "deploy": "bash ./build_n_deploy.sh",
     "docker": "docker-compose up",

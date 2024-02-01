@@ -95,7 +95,7 @@
         </div>
 
         <div class="startMore-content">
-          <div class="startMore-item" (click)="openWindow('me')">
+          <div class="startMore-item" (click)="openWindow('me'); closeStart(null, true)">
             <div class="startMore-item_icon">
               <i class="bi bi-person-fill"></i>
             </div>
@@ -105,7 +105,7 @@
             </div>
           </div>
 
-          <div class="startMore-item" (click)="openWindow('language')">
+          <div class="startMore-item" (click)="openWindow('language'); closeStart(null, true)">
             <div class="startMore-item_icon">
               <i class="bi bi-translate"></i>
             </div>
@@ -115,7 +115,7 @@
             </div>
           </div>
 
-          <div class="startMore-item" (click)="openWindow('theme')">
+          <div class="startMore-item" (click)="openWindow('theme'); closeStart(null, true)">
             <div class="startMore-item_icon">
               <i class="bi bi-palette-fill"></i>
             </div>
@@ -125,7 +125,7 @@
             </div>
           </div>
 
-          <div class="startMore-item">
+          <div class="startMore-item" (click)="closeStart(null, true)">
             <div class="startMore-item_icon">
               <i class="bi bi-power"></i>
             </div>

@@ -46,7 +46,7 @@ $white: #ffffff;
   @include fixedHeight($size);
 }
 
-@mixin allVendors($property, $args) {
+@mixin allVendors($property, $args...) {
   @each $prefix in ("-webkit-", "-moz-", "-ms-", "-o-", "") {
     #{$prefix + $property}: $args;
   }

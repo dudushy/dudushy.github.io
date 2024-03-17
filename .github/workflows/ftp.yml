@@ -17,7 +17,7 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          ng build --prod --output-path docs --base-href "https://dudushy.net/"
+          ng build --output-path docs --base-href "https://dudushy.net/"
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

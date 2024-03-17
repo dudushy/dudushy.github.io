@@ -17,7 +17,7 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          ng build --output-path docs --base-href ${{ secrets.BASE_HREF }}
+          ng build --base-href ${{ secrets.BASE_HREF }}
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -26,5 +26,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          local-dir: ./docs/browser/
+          local-dir: dist/portfolio/browser/
           server-dir: public_html/

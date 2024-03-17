@@ -3,8 +3,7 @@ name: ♻️ Update server (public_html)
 on:
   push:
     branches:
-      - gh-pages
-  workflow_dispatch:
+      - main
 
 jobs:
   web-deploy:
@@ -13,8 +12,12 @@ jobs:
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
-        with:
-          ref: gh-pages
+
+      - name: 🛠️ Build Angular project
+        run: |
+          npm install -g @angular/cli
+          npm ci
+          ng build --prod --output-path docs --base-href "https://dudushy.net/"
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -23,5 +26,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          local-dir: ./
+          local-dir: ./docs
           server-dir: public_html/

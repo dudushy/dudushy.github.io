@@ -17,7 +17,6 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          echo ${{ secrets.BASE_HREF }}
           ng build --output-path docs --base-href ${{ secrets.BASE_HREF }}
 
       - name: 📂 Sync files
@@ -27,5 +26,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          local-dir: ./docs/
+          local-dir: ./docs/browser/
           server-dir: public_html/

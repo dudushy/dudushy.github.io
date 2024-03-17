@@ -94,7 +94,7 @@ export class AppComponent {
     window.onclick = (e) => {
       console.log(`[${this.TITLE}#window.onclick] e`, e);
 
-      this.unselectWindow(e);
+      this.closeWindow(e);
       this.closeStart(e);
     };
   }
@@ -237,7 +237,8 @@ export class AppComponent {
     }
   }
 
-  closeStart(event: any) {
+  closeStart(event: any, force = false) {
+    console.log(`[${this.TITLE}#closeStart] force`, force);
     console.log(`[${this.TITLE}#closeStart] event`, event);
 
     console.log(`[${this.TITLE}#closeStart] startExpanded`, this.startExpanded);
@@ -253,13 +254,13 @@ export class AppComponent {
 
     if (!startIconElement) return;
 
-    const condition = event.target !== startElement &&
-      event.target !== startIconElement &&
-      !startElement.contains(event.target as Node) &&
-      !startIconElement.contains(event.target as Node);
+    const condition = event?.target !== startElement &&
+      event?.target !== startIconElement &&
+      !startElement.contains(event?.target as Node) &&
+      !startIconElement.contains(event?.target as Node);
     console.log(`[${this.TITLE}#closeStart] condition`, condition);
 
-    if (condition) {
+    if (condition || force) {
       this.startExpanded = false;
       startElement.classList.add('collapsed');
       startElement.classList.remove('expanded');
@@ -322,19 +323,20 @@ export class AppComponent {
     this.openedWindowTitle = window?.replace(/-/g, ' ');
   }
 
-  unselectWindow(event: any) {
-    console.log(`[${this.TITLE}#unselectWindow] event`, event);
+  closeWindow(event: any, force = false) {
+    console.log(`[${this.TITLE}#closeWindow] force`, force);
+    console.log(`[${this.TITLE}#closeWindow] event`, event);
 
-    console.log(`[${this.TITLE}#unselectWindow] selectedWindow`, this.selectedWindow);
+    console.log(`[${this.TITLE}#closeWindow] selectedWindow`, this.selectedWindow);
     if (!this.selectedWindow) return;
 
     const desktopItemElement = document.querySelector('.desktop-folder.selected, .desktop-file.selected');
-    console.log(`[${this.TITLE}#unselectWindow] desktopItemElement`, desktopItemElement);
+    console.log(`[${this.TITLE}#closeWindow] desktopItemElement`, desktopItemElement);
 
     if (!desktopItemElement) return;
 
     const windowElement = document.getElementById('window');
-    console.log(`[${this.TITLE}#unselectWindow] windowElement`, windowElement);
+    console.log(`[${this.TITLE}#closeWindow] windowElement`, windowElement);
 
     if (!windowElement) return;
 
@@ -342,9 +344,9 @@ export class AppComponent {
       event.target !== windowElement &&
       !desktopItemElement.contains(event.target as Node) &&
       !windowElement.contains(event.target as Node);
-    console.log(`[${this.TITLE}#unselectWindow] condition`, condition);
+    console.log(`[${this.TITLE}#closeWindow] condition`, condition);
 
-    if (condition) {
+    if (condition || force) {
       this.selectedWindow = null;
     }
   }

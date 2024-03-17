@@ -17,7 +17,11 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          ng build --base-href ${{ secrets.BASE_HREF }} --deploy-url .
+          ng build --base-href ${{ secrets.BASE_HREF }}
+
+      - name: 🛠️ Create 404.html
+        run: |
+          echo "<script>window.location.href = 'https://${{ secrets.DOMAIN }}/'</script>" > dist/portfolio/browser/404.html
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

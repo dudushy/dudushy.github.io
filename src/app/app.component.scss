@@ -65,6 +65,12 @@ main {
     flex-wrap: wrap;
     color: $light;
 
+    &::before {
+      content: "testing ftp";
+      position: absolute;
+      inset: 0;
+    }
+
     &,
     * {
       @include allVendors(user-select, none);

@@ -17,7 +17,7 @@ jobs:
         run: |
           npm install -g @angular/cli
           npm ci
-          ng build --base-href ${{ secrets.BASE_HREF }}
+          ng build --base-href ${{ secrets.BASE_HREF }} --deploy-url .
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5

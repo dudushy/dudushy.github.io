@@ -54,6 +54,16 @@
           <i class="bi bi-grid-3x3-gap-fill"></i>
         </div>
       </div>
+
+      <div class="desktop-file" (dblclick)="openWindow('test')" (click)="selectWindow('test')" [class.selected]="selectedWindow == 'test'">
+        <div class="desktop-file_mainIcon" [style.--fileMainIconColor]="'#2bff00'">
+          <i class="bi bi-code-slash"></i>
+        </div>
+
+        <div class="desktop-file_text">
+          Test
+        </div>
+      </div>
     </div>
 
     <div id="window" [attr.minimizeWindow]="openedWindow == null">
@@ -75,6 +85,7 @@
         <app-experience [class.hideWindow]="openedWindow != 'experience'"></app-experience>
         <app-more-information [class.hideWindow]="openedWindow != 'more-information'"></app-more-information>
         <app-projects [class.hideWindow]="openedWindow != 'projects'"></app-projects>
+        <app-test [class.hideWindow]="openedWindow != 'test'"></app-test>
       </div>
     </div>
   </div>

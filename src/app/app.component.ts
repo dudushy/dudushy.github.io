@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 import { DbService } from './services/db/db.service';
 
@@ -35,6 +36,7 @@ export class AppComponent {
   constructor(
     private cdr: ChangeDetectorRef,
     public router: Router,
+    public http: HttpClient,
     public db: DbService,
   ) {
     console.log(`[${this.TITLE}#constructor]`);

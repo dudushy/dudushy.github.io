@@ -10,6 +10,8 @@ import { AppComponent } from '../../app.component';
 export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
+  dataArray = [];
+
   constructor(
     private cdr: ChangeDetectorRef,
     public app: AppComponent
@@ -19,6 +21,8 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(`[${this.TITLE}#ngOnInit]`);
+
+    this.loadDataArray();
   }
 
   ngOnDestroy(): void {
@@ -36,5 +40,19 @@ export class TestComponent implements OnInit {
     await this.app.redirectTo(url, this.TITLE);
 
     this.updateView();
+  }
+
+  loadDataArray() {
+    this.app.http.get(
+      'https://webservice.dudushy.net/api',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
+    ).subscribe((data: any) => {
+      console.log(`[${this.TITLE}#loadDataArray] data`, data);
+    });
   }
 }

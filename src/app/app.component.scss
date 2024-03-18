@@ -65,11 +65,11 @@ main {
     flex-wrap: wrap;
     color: $light;
 
-    &::before {
-      content: "testing workflows";
-      position: absolute;
-      inset: 0;
-    }
+    // &::before {
+    //   content: "testing workflows";
+    //   position: absolute;
+    //   inset: 0;
+    // }
 
     &,
     * {

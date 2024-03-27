@@ -23,3 +23,21 @@ i {
   font-size: calc(var(--responsiveUnit) * 2);
   color: #2bff00;
 }
+
+.list {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .list-item {
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}

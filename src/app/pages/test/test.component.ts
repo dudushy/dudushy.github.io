@@ -10,7 +10,7 @@ import { AppComponent } from '../../app.component';
 export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
-  dataArray = [];
+  dataArray: any[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -52,6 +52,9 @@ export class TestComponent implements OnInit {
       }
     ).subscribe((data: any) => {
       console.log(`[${this.TITLE}#loadDataArray] data`, data);
+
+      this.dataArray = data.data;
+      console.log(`[${this.TITLE}#loadDataArray] this.dataArray`, this.dataArray);
     });
   }
 }

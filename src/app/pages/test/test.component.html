@@ -1,3 +1,31 @@
 <div id="{{TITLE}}-content" class="pageContent">
-  <i class="bi bi-bug-fill"></i>
+  <h1>allUsers</h1>
+
+  <div class="list">
+    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder">
+      <p>
+        {{item.key}}
+      </p>
+
+      <p>
+        {{item.value['id']}}
+      </p>
+
+      <p>
+        {{item.value['name']}}
+      </p>
+
+      <p>
+        {{item.value['username']}}
+      </p>
+
+      <p>
+        {{item.value['lastname']}}
+      </p>
+
+      <p>
+        {{item.value['email']}}
+      </p>
+    </div>
+  </div>
 </div>

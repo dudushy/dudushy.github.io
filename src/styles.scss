@@ -21,7 +21,9 @@ $white: #ffffff;
   --dynamicHeight: 100vh;
   --windowInset: calc(var(--responsiveUnit) * 1.5);
   --windowToolbarHeight: calc(var(--responsiveUnit) * 1.2);
-  --windowContentHeight: calc(var(--dynamicHeight) - var(--footerHeight) - var(--windowToolbarHeight) - var(--windowInset) * 2);
+  --windowContentHeight: calc(
+    var(--dynamicHeight) - var(--footerHeight) - var(--windowToolbarHeight) - var(--windowInset) * 2
+  );
 
   @supports (--css: variables) {
     --dynamicHeight: 100dvh;
@@ -41,9 +43,14 @@ $white: #ffffff;
   max-width: $width;
 }
 
-@mixin square($size) {
+@mixin fixedSquare($size) {
   @include fixedWidth($size);
   @include fixedHeight($size);
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
 }
 
 @mixin allVendors($property, $args...) {

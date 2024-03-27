@@ -1,31 +1,77 @@
 <div id="{{TITLE}}-content" class="pageContent">
-  <h1>allUsers</h1>
+  <div class="title">
+    <h3>List of Users:</h3>
+
+    <button class="action-edit"><i class="bi bi-arrow-clockwise"></i></button>
+  </div>
+
+  <div class="inputs">
+    <div class="input-wrapper">
+      <label for="name">Name:</label>
+      <input type="text" id="name" />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="lastname">Surname:</label>
+      <input type="text" id="lastname" />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="username">User:</label>
+      <input type="text" id="username" />
+    </div>
+
+    <div class="input-wrapper">
+      <label for="email">Email:</label>
+      <input type="text" id="email" />
+    </div>
+
+    <div class="input-wrapper">
+      <button><i class="bi bi-plus-circle"></i></button>
+    </div>
+  </div>
 
   <div class="list">
-    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder">
-      <p>
-        {{item.key}}
-      </p>
+    <div class="list-header">
+      <span>#</span>
 
-      <p>
-        {{item.value['id']}}
-      </p>
+      <span>Name</span>
 
-      <p>
+      <span>Surname</span>
+
+      <span>User</span>
+
+      <span>Email</span>
+
+      <span>Actions</span>
+    </div>
+
+    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder; let i = index">
+      <span>
+        {{i + 1}}
+      </span>
+
+      <span>
         {{item.value['name']}}
-      </p>
+      </span>
 
-      <p>
-        {{item.value['username']}}
-      </p>
-
-      <p>
+      <span>
         {{item.value['lastname']}}
-      </p>
+      </span>
 
-      <p>
+      <span>
+        {{item.value['username']}}
+      </span>
+
+      <span>
         {{item.value['email']}}
-      </p>
+      </span>
+
+      <span class="actions">
+        <button class="action-edit"><i class="bi bi-pencil-square"></i></button>
+
+        <button class="action-delete"><i class="bi bi-trash3-fill"></i></button>
+      </span>
     </div>
   </div>
 </div>

@@ -24,20 +24,255 @@ i {
   color: #2bff00;
 }
 
+.title {
+  background: $light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-inline: calc(var(--responsiveUnit) * 0.2);
+  border-radius: calc(var(--responsiveUnit) * 0.5);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow: hidden;
+
+  h3 {
+    font-size: calc(var(--responsiveUnit) * 1.5);
+    color: $dark;
+    margin-right: calc(var(--responsiveUnit) * 0.5);
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $dark;
+    outline: none;
+    border: none;
+    border-radius: calc(var(--responsiveUnit) * 0.5);
+    padding: calc(var(--responsiveUnit) * 0.5);
+    cursor: pointer;
+    @include allVendors(transition, all 0.3s ease-in-out);
+    @include square(calc(var(--responsiveUnit) * 1.5));
+
+    &:hover {
+      background: lighten($dark, 15%);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    i {
+      color: $light;
+      font-size: calc(var(--responsiveUnit) * 1);
+    }
+  }
+}
+
+.inputs {
+  background: $warning;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: calc(var(--responsiveUnit) * 0.5);
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      font-size: calc(var(--responsiveUnit) * 0.8);
+    }
+
+    input {
+      background: $black;
+      color: $light;
+      width: 100%;
+      padding: calc(var(--responsiveUnit) * 0.5);
+      margin-bottom: calc(var(--responsiveUnit) * 0.5);
+      border: none;
+      border-radius: calc(var(--responsiveUnit) * 0.5);
+      outline: none;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $success;
+      outline: none;
+      border: none;
+      border-radius: calc(var(--responsiveUnit) * 0.5);
+      padding: calc(var(--responsiveUnit) * 0.5);
+      cursor: pointer;
+      @include allVendors(transition, all 0.3s ease-in-out);
+      @include square(calc(var(--responsiveUnit) * 1.5));
+
+      &:hover {
+        background: darken($success, 15%);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      i {
+        color: $light;
+        font-size: calc(var(--responsiveUnit) * 1);
+      }
+    }
+  }
+}
+
 .list {
-  background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-inline: calc(var(--responsiveUnit) * 0.2);
+  margin-bottom: calc(var(--responsiveUnit) * 0.8);
+  border-radius: calc(var(--responsiveUnit) * 0.5);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  overflow: hidden;
 
+  .list-header,
   .list-item {
-    background: white;
+    span {
+      border-right: calc(var(--responsiveUnit) * 0.05) solid $dark;
+      border-left: calc(var(--responsiveUnit) * 0.05) solid $dark;
+      width: 100%;
+      height: 100%;
+      padding: calc(var(--responsiveUnit) * 0.5);
+      padding-inline: calc(var(--responsiveUnit) * 1);
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &:nth-child(1) {
+        width: 5%;
+        text-align: center;
+      }
+
+      &:nth-child(2) {
+        width: 20%;
+      }
+
+      &:nth-child(3) {
+        width: 20%;
+      }
+
+      &:nth-child(4) {
+        width: 15%;
+      }
+
+      &:nth-child(5) {
+        width: 30%;
+      }
+
+      &:nth-child(6) {
+        width: 10%;
+      }
+    }
+  }
+
+  .list-header {
+    background: $success;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: calc(var(--responsiveUnit) * 2.5);
+
+    span {
+      text-align: center;
+      font-size: calc(var(--responsiveUnit) * 1);
+      font-weight: bolder;
+    }
+  }
+
+  .list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: calc(var(--responsiveUnit) * 2);
+
+    &:nth-child(odd) {
+      background: lighten($primary, 5%);
+    }
+
+    &:nth-child(even) {
+      background: lighten($primary, 10%);
+    }
+
+    span {
+      font-size: calc(var(--responsiveUnit) * 0.8);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $dark;
+        outline: none;
+        border: none;
+        border-radius: calc(var(--responsiveUnit) * 0.5);
+        padding: calc(var(--responsiveUnit) * 0.5);
+        cursor: pointer;
+        @include allVendors(transition, all 0.3s ease-in-out);
+        @include square(calc(var(--responsiveUnit) * 1.5));
+
+        &:hover {
+          background: lighten($dark, 15%);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+
+        i {
+          color: $light;
+          font-size: calc(var(--responsiveUnit) * 1);
+        }
+
+        &.action-edit {
+          background: $tertiary;
+
+          &:hover {
+            background: darken($tertiary, 15%);
+          }
+        }
+
+        &.action-delete {
+          background: $danger;
+
+          &:hover {
+            background: darken($danger, 15%);
+          }
+        }
+      }
+    }
   }
 }

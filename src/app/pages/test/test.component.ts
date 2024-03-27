@@ -47,8 +47,7 @@ export class TestComponent implements OnInit {
       'https://webservice.dudushy.net/api',
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Content-Type': 'application/json'
         }
       }
     ).subscribe((data: any) => {

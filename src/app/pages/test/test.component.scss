@@ -110,7 +110,8 @@ i {
       padding: calc(var(--responsiveUnit) * 0.5);
       cursor: pointer;
       @include allVendors(transition, all 0.3s ease-in-out);
-      @include square(calc(var(--responsiveUnit) * 1.5));
+      width: calc(var(--responsiveUnit) * 4.5);
+      height: calc(var(--responsiveUnit) * 2);
 
       &:hover {
         background: darken($success, 15%);
@@ -118,6 +119,13 @@ i {
 
       &:active {
         transform: scale(0.95);
+      }
+
+      span {
+        font-size: calc(var(--responsiveUnit) * 0.8);
+        font-weight: bolder;
+        color: $light;
+        padding-right: calc(var(--responsiveUnit) * 0.5);
       }
 
       i {
@@ -220,6 +228,10 @@ i {
 
     &:nth-child(even) {
       background: lighten($primary, 10%);
+    }
+
+    &.selected {
+      background: $light;
     }
 
     span {

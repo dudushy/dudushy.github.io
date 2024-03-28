@@ -2,32 +2,44 @@
   <div class="title">
     <h3>List of Users:</h3>
 
-    <button class="action-edit"><i class="bi bi-arrow-clockwise"></i></button>
+    <button class="action-edit" (click)="loadDataArray()">
+      <i class="bi bi-arrow-clockwise"></i>
+    </button>
   </div>
 
   <div class="inputs">
     <div class="input-wrapper">
-      <label for="name">Name:</label>
-      <input type="text" id="name" />
+      <label for="input-name">Name:</label>
+      <input type="text" id="input-name" />
     </div>
 
     <div class="input-wrapper">
-      <label for="lastname">Surname:</label>
-      <input type="text" id="lastname" />
+      <label for="input-lastname">Surname:</label>
+      <input type="text" id="input-lastname" />
     </div>
 
     <div class="input-wrapper">
-      <label for="username">User:</label>
-      <input type="text" id="username" />
+      <label for="input-username">User:</label>
+      <input type="text" id="input-username" />
     </div>
 
     <div class="input-wrapper">
-      <label for="email">Email:</label>
-      <input type="text" id="email" />
+      <label for="input-email">Email:</label>
+      <input type="email" id="input-email" />
     </div>
 
     <div class="input-wrapper">
-      <button><i class="bi bi-plus-circle"></i></button>
+      <button *ngIf="mode == 'add'" (click)="saveItem()">
+        <span>Add</span>
+
+        <i class="bi bi-plus-circle"></i>
+      </button>
+
+      <button *ngIf="mode == 'save'" (click)="saveItem()">
+        <span>Save</span>
+
+        <i class="bi bi-floppy-fill"></i>
+      </button>
     </div>
   </div>
 
@@ -46,7 +58,7 @@
       <span>Actions</span>
     </div>
 
-    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder; let i = index">
+    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder; let i = index" [class.selected]="item.value['id'] == selectedId">
       <span>
         {{i + 1}}
       </span>
@@ -68,9 +80,13 @@
       </span>
 
       <span class="actions">
-        <button class="action-edit"><i class="bi bi-pencil-square"></i></button>
+        <button class="action-edit" (click)="editItem(item.value)">
+          <i class="bi bi-pencil-square"></i>
+        </button>
 
-        <button class="action-delete"><i class="bi bi-trash3-fill"></i></button>
+        <button class="action-delete" (click)="deleteItem(item.value)">
+          <i class="bi bi-trash3-fill"></i>
+        </button>
       </span>
     </div>
   </div>

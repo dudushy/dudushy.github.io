@@ -11,6 +11,8 @@ export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
   dataArray: any[] = [];
+  mode = 'add';
+  selectedId = null;
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -56,5 +58,141 @@ export class TestComponent implements OnInit {
       this.dataArray = data.data;
       console.log(`[${this.TITLE}#loadDataArray] this.dataArray`, this.dataArray);
     });
+  }
+
+  editItem(itemData: any) {
+    console.log(`[${this.TITLE}#editItem] itemData`, itemData);
+
+    this.mode = 'save';
+    console.log(`[${this.TITLE}#editItem] this.mode`, this.mode);
+
+    this.selectedId = itemData.id;
+    console.log(`[${this.TITLE}#editItem] this.selectedId`, this.selectedId);
+
+    const inputName = document.getElementById('input-name') as HTMLInputElement;
+    console.log(`[${this.TITLE}#editItem] inputName`, inputName);
+
+    const inputLastname = document.getElementById('input-lastname') as HTMLInputElement;
+    console.log(`[${this.TITLE}#editItem] inputLastname`, inputLastname);
+
+    const inputUsername = document.getElementById('input-username') as HTMLInputElement;
+    console.log(`[${this.TITLE}#editItem] inputUsername`, inputUsername);
+
+    const inputEmail = document.getElementById('input-email') as HTMLInputElement;
+    console.log(`[${this.TITLE}#editItem] inputEmail`, inputEmail);
+
+    inputName.value = itemData.name;
+    inputLastname.value = itemData.lastname;
+    inputUsername.value = itemData.username;
+    inputEmail.value = itemData.email;
+
+    // this.updateView();
+  }
+
+  saveItem() {
+    console.log(`[${this.TITLE}#saveItem]`);
+
+    const inputName = document.getElementById('input-name') as HTMLInputElement;
+    console.log(`[${this.TITLE}#saveItem] inputName`, inputName);
+
+    const inputLastname = document.getElementById('input-lastname') as HTMLInputElement;
+    console.log(`[${this.TITLE}#saveItem] inputLastname`, inputLastname);
+
+    const inputUsername = document.getElementById('input-username') as HTMLInputElement;
+    console.log(`[${this.TITLE}#saveItem] inputUsername`, inputUsername);
+
+    const inputEmail = document.getElementById('input-email') as HTMLInputElement;
+    console.log(`[${this.TITLE}#saveItem] inputEmail`, inputEmail);
+
+    const body = {
+      name: inputName.value,
+      lastname: inputLastname.value,
+      username: inputUsername.value,
+      email: inputEmail.value
+    };
+    console.log(`[${this.TITLE}#saveItem] body`, body);
+
+    if (this.mode === 'add') {
+      this.app.http.post(
+        'https://webservice.dudushy.net/api/create',
+        body,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      ).subscribe((data: any) => {
+        console.log(`[${this.TITLE}#saveItem] data`, data);
+
+        this.loadDataArray();
+
+        inputName.value = '';
+        inputLastname.value = '';
+        inputUsername.value = '';
+        inputEmail.value = '';
+      });
+    }
+
+    if (this.mode === 'save') {
+      this.app.http.put(
+        `https://webservice.dudushy.net/api/update/${this.selectedId}`,
+        body,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      ).subscribe((data: any) => {
+        console.log(`[${this.TITLE}#saveItem] data`, data);
+
+        this.loadDataArray();
+
+        inputName.value = '';
+        inputLastname.value = '';
+        inputUsername.value = '';
+        inputEmail.value = '';
+      });
+    }
+
+    this.mode = 'add';
+    console.log(`[${this.TITLE}#saveItem] this.mode`, this.mode);
+
+    this.selectedId = null;
+    console.log(`[${this.TITLE}#saveItem] this.selectedId`, this.selectedId);
+
+    // this.updateView();
+  }
+
+  deleteItem(itemData: any) {
+    console.log(`[${this.TITLE}#deleteItem] itemData`, itemData);
+
+    this.selectedId = itemData.id;
+    console.log(`[${this.TITLE}#deleteItem] this.selectedId`, this.selectedId);
+
+    // this.updateView();
+
+    setTimeout(() => {
+      const choice = confirm('Are you sure you want to delete this item?');
+      console.log(`[${this.TITLE}#deleteItem] choice`, choice);
+
+      if (!choice) {
+        this.selectedId = null;
+
+        return;
+      }
+
+      this.app.http.delete(
+        `https://webservice.dudushy.net/api/delete/${itemData.id}`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      ).subscribe((data: any) => {
+        console.log(`[${this.TITLE}#deleteItem] data`, data);
+
+        this.loadDataArray();
+      });
+    }, 50);
   }
 }

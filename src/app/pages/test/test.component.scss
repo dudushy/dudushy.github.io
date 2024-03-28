@@ -83,9 +83,13 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: calc(var(--responsiveUnit) * 11);
+    height: calc(var(--responsiveUnit) * 3.5);
 
     label {
-      font-size: calc(var(--responsiveUnit) * 0.8);
+      font-size: calc(var(--responsiveUnit) * 1);
+      // width: calc(var(--responsiveUnit) * 4.5);
+      // height: calc(var(--responsiveUnit) * 2);
     }
 
     input {
@@ -97,6 +101,9 @@ i {
       border: none;
       border-radius: calc(var(--responsiveUnit) * 0.5);
       outline: none;
+      // width: calc(var(--responsiveUnit) * 4.5);
+      // height: calc(var(--responsiveUnit) * 2);
+      font-size: calc(var(--responsiveUnit) * 0.7);
     }
 
     button {

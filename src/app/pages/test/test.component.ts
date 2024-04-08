@@ -10,6 +10,9 @@ import { AppComponent } from '../../app.component';
 export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
+  baseUrl = 'https://webservice.dudushy.net/';
+  // baseUrl = 'https://test.dudushy.net/';
+
   dataArray: any[] = [];
   mode = 'add';
   selectedId = null;
@@ -46,7 +49,7 @@ export class TestComponent implements OnInit {
 
   loadDataArray() {
     this.app.http.get(
-      'https://webservice.dudushy.net/api',
+      `${this.baseUrl}/api`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -114,7 +117,7 @@ export class TestComponent implements OnInit {
 
     if (this.mode === 'add') {
       this.app.http.post(
-        'https://webservice.dudushy.net/api/create',
+        `${this.baseUrl}/api/create`,
         body,
         {
           headers: {
@@ -135,7 +138,7 @@ export class TestComponent implements OnInit {
 
     if (this.mode === 'save') {
       this.app.http.put(
-        `https://webservice.dudushy.net/api/update/${this.selectedId}`,
+        `${this.baseUrl}/api/update/${this.selectedId}`,
         body,
         {
           headers: {
@@ -182,7 +185,7 @@ export class TestComponent implements OnInit {
       }
 
       this.app.http.delete(
-        `https://webservice.dudushy.net/api/delete/${itemData.id}`,
+        `${this.baseUrl}/api/delete/${itemData.id}`,
         {
           headers: {
             'Content-Type': 'application/json'

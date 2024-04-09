@@ -10,8 +10,8 @@ import { AppComponent } from '../../app.component';
 export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
-  baseUrl = 'https://webservice.dudushy.net/';
-  // baseUrl = 'https://test.dudushy.net/';
+  baseUrl = 'https://webservice.dudushy.net';
+  // baseUrl = 'https://test.dudushy.net';
 
   dataArray: any[] = [];
   mode = 'add';
@@ -48,12 +48,18 @@ export class TestComponent implements OnInit {
   }
 
   loadDataArray() {
+    const url = `${this.baseUrl}/api`;
+    console.log(`[${this.TITLE}#loadDataArray] url`, url);
+
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+    console.log(`[${this.TITLE}#loadDataArray] headers`, headers);
+
     this.app.http.get(
-      `${this.baseUrl}/api`,
+      url,
       {
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        headers: headers
       }
     ).subscribe((data: any) => {
       console.log(`[${this.TITLE}#loadDataArray] data`, data);
@@ -116,13 +122,19 @@ export class TestComponent implements OnInit {
     console.log(`[${this.TITLE}#saveItem] body`, body);
 
     if (this.mode === 'add') {
+      const url = `${this.baseUrl}/api/create`;
+      console.log(`[${this.TITLE}#saveItem] url`, url);
+
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      console.log(`[${this.TITLE}#saveItem] headers`, headers);
+
       this.app.http.post(
-        `${this.baseUrl}/api/create`,
+        url,
         body,
         {
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          headers: headers
         }
       ).subscribe((data: any) => {
         console.log(`[${this.TITLE}#saveItem] data`, data);
@@ -137,13 +149,19 @@ export class TestComponent implements OnInit {
     }
 
     if (this.mode === 'save') {
+      const url = `${this.baseUrl}/api/update/${this.selectedId}`;
+      console.log(`[${this.TITLE}#saveItem] url`, url);
+
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      console.log(`[${this.TITLE}#saveItem] headers`, headers);
+
       this.app.http.put(
-        `${this.baseUrl}/api/update/${this.selectedId}`,
+        url,
         body,
         {
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          headers: headers
         }
       ).subscribe((data: any) => {
         console.log(`[${this.TITLE}#saveItem] data`, data);
@@ -184,12 +202,18 @@ export class TestComponent implements OnInit {
         return;
       }
 
+      const url = `${this.baseUrl}/api/delete/${itemData.id}`;
+      console.log(`[${this.TITLE}#deleteItem] url`, url);
+
+      const headers = {
+        'Content-Type': 'application/json'
+      };
+      console.log(`[${this.TITLE}#deleteItem] headers`, headers);
+
       this.app.http.delete(
-        `${this.baseUrl}/api/delete/${itemData.id}`,
+        url,
         {
-          headers: {
-            'Content-Type': 'application/json'
-          }
+          headers: headers
         }
       ).subscribe((data: any) => {
         console.log(`[${this.TITLE}#deleteItem] data`, data);

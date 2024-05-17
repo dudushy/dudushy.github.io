@@ -1,93 +1,125 @@
 <div id="{{TITLE}}-content" class="pageContent">
-  <div class="title">
-    <h3>List of Users:</h3>
-
-    <button class="action-edit" (click)="loadDataArray()">
-      <i class="bi bi-arrow-clockwise"></i>
-    </button>
-  </div>
-
-  <div class="inputs">
-    <div class="input-wrapper">
-      <label for="input-name">Name:</label>
-      <input type="text" id="input-name" />
+  <div class="ng-if false" *ngIf="!loggedIn">
+    <div class="title">
+      <h3>Please log in:</h3>
     </div>
 
-    <div class="input-wrapper">
-      <label for="input-lastname">Surname:</label>
-      <input type="text" id="input-lastname" />
-    </div>
+    <div class="inputs">
+      <div class="input-wrapper">
+        <label for="input-user">User:</label>
+        <input type="text" id="input-user" />
+      </div>
 
-    <div class="input-wrapper">
-      <label for="input-username">User:</label>
-      <input type="text" id="input-username" />
-    </div>
+      <div class="input-wrapper">
+        <label for="input-password">Password:</label>
+        <input type="password" id="input-password" />
+      </div>
 
-    <div class="input-wrapper">
-      <label for="input-email">Email:</label>
-      <input type="email" id="input-email" />
-    </div>
+      <div class="input-wrapper">
+        <button (click)="login()">
+          <span>enter</span>
 
-    <div class="input-wrapper">
-      <button *ngIf="mode == 'add'" (click)="saveItem()">
-        <span>Add</span>
-
-        <i class="bi bi-plus-circle"></i>
-      </button>
-
-      <button *ngIf="mode == 'save'" (click)="saveItem()">
-        <span>Save</span>
-
-        <i class="bi bi-floppy-fill"></i>
-      </button>
+          <i class="bi bi-box-arrow-in-right"></i>
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="list">
-    <div class="list-header">
-      <span>#</span>
+  <div class="ng-if true" *ngIf="loggedIn">
+    <div class="title">
+      <h3>List of Users:</h3>
 
-      <span>Name</span>
+      <button class="action-edit" (click)="loadDataArray()">
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
 
-      <span>Surname</span>
-
-      <span>User</span>
-
-      <span>Email</span>
-
-      <span>Actions</span>
+      <button class="action-logout" (click)="logout()">
+        <i class="bi bi-box-arrow-in-left"></i>
+      </button>
     </div>
 
-    <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder; let i = index" [class.selected]="item.value['id'] == selectedId">
-      <span>
-        {{i + 1}}
-      </span>
+    <div class="inputs">
+      <div class="input-wrapper">
+        <label for="input-name">Name:</label>
+        <input type="text" id="input-name" />
+      </div>
 
-      <span>
-        {{item.value['name']}}
-      </span>
+      <div class="input-wrapper">
+        <label for="input-lastname">Surname:</label>
+        <input type="text" id="input-lastname" />
+      </div>
 
-      <span>
-        {{item.value['lastname']}}
-      </span>
+      <div class="input-wrapper">
+        <label for="input-username">User:</label>
+        <input type="text" id="input-username" />
+      </div>
 
-      <span>
-        {{item.value['username']}}
-      </span>
+      <div class="input-wrapper">
+        <label for="input-email">Email:</label>
+        <input type="email" id="input-email" />
+      </div>
 
-      <span>
-        {{item.value['email']}}
-      </span>
+      <div class="input-wrapper">
+        <button *ngIf="mode == 'add'" (click)="saveItem()">
+          <span>Add</span>
 
-      <span class="actions">
-        <button class="action-edit" (click)="editItem(item.value)">
-          <i class="bi bi-pencil-square"></i>
+          <i class="bi bi-plus-circle"></i>
         </button>
 
-        <button class="action-delete" (click)="deleteItem(item.value)">
-          <i class="bi bi-trash3-fill"></i>
+        <button *ngIf="mode == 'save'" (click)="saveItem()">
+          <span>Save</span>
+
+          <i class="bi bi-floppy-fill"></i>
         </button>
-      </span>
+      </div>
+    </div>
+
+    <div class="list">
+      <div class="list-header">
+        <span>#</span>
+
+        <span>Name</span>
+
+        <span>Surname</span>
+
+        <span>User</span>
+
+        <span>Email</span>
+
+        <span>Actions</span>
+      </div>
+
+      <div class="list-item" *ngFor="let item of dataArray | keyvalue : app.defaultOrder; let i = index" [class.selected]="item.value['id'] == selectedId">
+        <span>
+          {{i + 1}}
+        </span>
+
+        <span>
+          {{item.value['name']}}
+        </span>
+
+        <span>
+          {{item.value['lastname']}}
+        </span>
+
+        <span>
+          {{item.value['username']}}
+        </span>
+
+        <span>
+          {{item.value['email']}}
+        </span>
+
+        <span class="actions">
+          <button class="action-edit" (click)="editItem(item.value)">
+            <i class="bi bi-pencil-square"></i>
+          </button>
+
+          <button class="action-delete" (click)="deleteItem(item.value)">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+        </span>
+      </div>
     </div>
   </div>
 </div>

@@ -11,7 +11,9 @@ export class TestComponent implements OnInit {
   TITLE = 'TestComponent';
 
   baseUrl = 'https://webservice.dudushy.net';
-  // baseUrl = 'https://test.dudushy.net';
+
+  loggedIn = false;
+  token = null;
 
   dataArray: any[] = [];
   mode = 'add';
@@ -27,7 +29,9 @@ export class TestComponent implements OnInit {
   ngOnInit(): void {
     console.log(`[${this.TITLE}#ngOnInit]`);
 
-    this.loadDataArray();
+    this.load();
+
+    if (this.loggedIn) this.loadDataArray();
   }
 
   ngOnDestroy(): void {
@@ -47,8 +51,79 @@ export class TestComponent implements OnInit {
     this.updateView();
   }
 
+  load() {
+    console.log(`[${this.TITLE}#load]`);
+
+    this.token = this.app.db.getCookie('token');
+    console.log(`[${this.TITLE}#load] this.token`, this.token);
+
+    this.loggedIn = this.token ? true : false;
+    console.log(`[${this.TITLE}#load] this.loggedIn`, this.loggedIn);
+  }
+
+  login() {
+    console.log(`[${this.TITLE}#login]`);
+
+    const inputUser = document.getElementById('input-user') as HTMLInputElement;
+    console.log(`[${this.TITLE}#login] inputUser`, inputUser);
+
+    const inputPassword = document.getElementById('input-password') as HTMLInputElement;
+    console.log(`[${this.TITLE}#login] inputPassword`, inputPassword);
+
+    const body = {
+      user: inputUser.value,
+      password: inputPassword.value
+    };
+    console.log(`[${this.TITLE}#login] body`, body);
+
+    const url = `${this.baseUrl}/api/login`;
+    console.log(`[${this.TITLE}#login] url`, url);
+
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+    console.log(`[${this.TITLE}#login] headers`, headers);
+
+    this.app.http.post(
+      url,
+      body,
+      {
+        headers: headers
+      }
+    ).subscribe((data: any) => {
+      console.log(`[${this.TITLE}#login] data`, data);
+
+      const token = data.token;
+      console.log(`[${this.TITLE}#login] token`, token);
+
+      const expires = data.expires;
+      console.log(`[${this.TITLE}#login] expires`, expires);
+
+      const expires_in_ms = expires * 1000;
+      console.log(`[${this.TITLE}#login] expires_in_ms`, expires_in_ms);
+
+      this.app.db.setCookie('token', token, expires_in_ms, true, false, 'None');
+
+      this.token = token;
+      this.loggedIn = true;
+    });
+
+    this.updateView();
+  }
+
+  logout() {
+    console.log(`[${this.TITLE}#logout]`);
+
+    this.app.db.setCookie('token', '', -1);
+
+    this.token = null;
+    this.loggedIn = false;
+
+    this.updateView();
+  }
+
   loadDataArray() {
-    const url = `${this.baseUrl}/api`;
+    const url = `${this.baseUrl}/api/test`;
     console.log(`[${this.TITLE}#loadDataArray] url`, url);
 
     const headers = {
@@ -122,7 +197,7 @@ export class TestComponent implements OnInit {
     console.log(`[${this.TITLE}#saveItem] body`, body);
 
     if (this.mode === 'add') {
-      const url = `${this.baseUrl}/api/create`;
+      const url = `${this.baseUrl}/api/test/create`;
       console.log(`[${this.TITLE}#saveItem] url`, url);
 
       const headers = {
@@ -149,7 +224,7 @@ export class TestComponent implements OnInit {
     }
 
     if (this.mode === 'save') {
-      const url = `${this.baseUrl}/api/update/${this.selectedId}`;
+      const url = `${this.baseUrl}/api/test/update/${this.selectedId}`;
       console.log(`[${this.TITLE}#saveItem] url`, url);
 
       const headers = {
@@ -202,7 +277,7 @@ export class TestComponent implements OnInit {
         return;
       }
 
-      const url = `${this.baseUrl}/api/delete/${itemData.id}`;
+      const url = `${this.baseUrl}/api/test/delete/${itemData.id}`;
       console.log(`[${this.TITLE}#deleteItem] url`, url);
 
       const headers = {
